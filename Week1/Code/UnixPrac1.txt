@@ -1,1 +1,17 @@
 #1 Count number of lines in each file
+wc -l ../Data/{407228326.fasta,407228412.fasta,E.coli.fasta}
+# where wc gives counts of a file, and -l specifies to count only number of lines
+
+#2 Print everything starting from the second line 
+tail -n +2 ../Data/E.coli.fasta
+# tail prints the last lines of a file, and -n +2 specifies to start from the second line
+
+#3 Count the sequence length of this genome
+tail -n +2 ../Data/E.coli.fasta | wc -m
+# still excluding the first line, wc -m counts the number of characters
+
+#4 Count the matches of sequence "ATGC" in the genome of E.coli
+tail -n +2 ../Data/E.coli.fasta | tr -d "\n" | grep -o "ATGC" | wc -l
+# grep finds the occurences of the sequence in the file, and wc -l counts the number of occurences 
+
+#5 Compute the AT/GC ratio
