@@ -12,6 +12,8 @@ tail -n +2 ../Data/E.coli.fasta | wc -m
 
 #4 Count the matches of sequence "ATGC" in the genome of E.coli
 tail -n +2 ../Data/E.coli.fasta | tr -d "\n" | grep -o "ATGC" | wc -l
-# grep finds the occurences of the sequence in the file, and wc -l counts the number of occurences 
+# grep finds the occurences of the sequence in the file, which is converted into 1 line using tr -d "\n", and wc -l counts the number of occurences 
 
 #5 Compute the AT/GC ratio
+A=$(tail -n +2 ../Data/E.coli.fasta | tr -d "\n" | grep -o "A" | wc -l) && T=$(tail -n +2 ../Data/E.coli.fasta | tr -d "\n" | grep -o "T" | wc -l) && G=$(tail -n +2 ../Data/E.coli.fasta | tr -d "\n" | grep -o "G" | wc -l) && C=$(tail -n +2 ../Data/E.coli.fasta | tr -d "\n" | grep -o "C" | wc -l) && result=$(echo "($A+$T)/($G+$C)" | bc -l) && echo "$result"
+# counts the number of each character and works out the ratio of AT to GC 
