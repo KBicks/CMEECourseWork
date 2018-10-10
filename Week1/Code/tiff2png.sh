@@ -5,6 +5,7 @@
 # Arguments: f-> .tiff
 # Date: 07 Oct 2018
 
+# for loop which converts tiff files to png files
 for f in *.tif;
     do
         echo "Converting $f";

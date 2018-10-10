@@ -6,6 +6,7 @@
 # Date: 08 Oct 2018
 
 echo "Creating a space delimited version of $1"
-cat $1 | tr -s "," " " >> $1.txt 
+# replaces commas with spaces
+cat $1 | tr -s "," " " >> $1.txt
 echo "Done!"
 exit

@@ -5,7 +5,7 @@
 # Arguments: MyVar -> string, a,b,mysum-> numerical values
 # Date: 07 Oct 2018
 
-#Shows the use of variables
+#Shows the use of setting variables
 MyVar='some string'
 echo 'the current value of the variable is' $MyVar
 echo 'please enter a new string'

@@ -6,6 +6,7 @@
 # Date: 02 Oct 2018
 
 echo "Creating a comma delimited version of $1 ..."
-cat $1 | tr -s "\t" "," >> $1.csv #reading variable, removing tabs and replacing with commas
+# Replace tabs with commas
+cat $1 | tr -s "\t" "," >> $1.csv
 echo "Done!"
 exit

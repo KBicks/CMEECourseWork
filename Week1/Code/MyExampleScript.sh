@@ -5,8 +5,10 @@
 # Arguments: msg1,msg2 -> alphanumeric string
 # Date: 07 Oct 2018
 
+# set values of variables
 msg1='Hello'
 msg2=$USER
+# print variables 
 echo "$msg1 $msg2"
 echo "Hello $USER"
 echo
