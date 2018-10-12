@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
+"""Boilerplate script to demonstrate how a python code runs."""
 
-"""Description of this program or application
-Which can cover multiple lines"""
-
-__appname__ = '[boilerplate.py]'
 __author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = ''
-__license__ = "License for this code/program"
+__version__ = '3.5.2'
+
 
 ## imports ##
 import sys # module to interface program with operating system
@@ -19,7 +16,8 @@ def main(argv):
     print('This is a boilerplate')
     return 0 #success failure codes - 0 means it has worked
 
-if __name__ == "__main__":
+if __name__ == "__main__": #allows file to be run as script and imported 
+    #- programme runs itself instead of requiring another module
     """Makes sure the "main" function is called from the command line"""
-    status = main(sys.argv)
-    sys.exit(status)
+    status = main(sys.argv) #if above statement is true, outputs definition
+    sys.exit(status) #gives the status upon exit - 0 if successful
