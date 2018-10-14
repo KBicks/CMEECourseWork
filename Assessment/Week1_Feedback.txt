@@ -86,10 +86,10 @@ The Sandbox directory contains the practise and test files.*********************
 Found following files in results directory: ...
 Found 13 code files: ConcatenateTwoFiles.sh, .txt, CountLines.sh, variables.sh, CompileLaTeX.sh, tiff2png.sh, csvtospace.sh, FirstExample.tex, MyExampleScript.sh, FirstBiblio.bib, UnixPrac1.txt, tabtocsv.sh, boilerplate.sh
 
-Found the following extra files: FirstExample.pdf
+Found the following extra files: FirstExample.log, FirstExample.aux, FirstExample.pdf
 0.5 pt deducted per extra file
 
-Current Points = 99.5
+Current Points = 98.5
 
 ======================================================================
 Testing script/code files...
@@ -265,9 +265,7 @@ Encountered error:
 bibtex: Need exactly one file argument.
 Try `bibtex --help' for more information.
 rm: cannot remove '*~': No such file or directory
-rm: cannot remove '*.aux': No such file or directory
 rm: cannot remove '*.dvi': No such file or directory
-rm: cannot remove '*.log': No such file or directory
 rm: cannot remove '*.nav': No such file or directory
 rm: cannot remove '*.out': No such file or directory
 rm: cannot remove '*.snm': No such file or directory
@@ -275,29 +273,29 @@ rm: cannot remove '*.toc': No such file or directory
 rm: cannot remove '*.blg': No such file or directory
 rm: cannot remove '*.bbl': No such file or directory
 
-** (evince:23950): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2018-19/Coursework/StudentRepos/KatherineBickerton_KB2018/Week1/Code/.pdf': No such file or directory
+** (evince:26704): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2018-19/Coursework/StudentRepos/KatherineBickerton_KB2018/Week1/Code/.pdf': No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:23950): WARNING **: Error setting file metadata: No such file or directory
+** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
 
 ======================================================================
 Inspecting script file tiff2png.sh...
@@ -363,7 +361,7 @@ Done!
 
 Code ran without errors
 
-Time consumed = 0.00834s
+Time consumed = 0.00738s
 
 ======================================================================
 Inspecting script file FirstExample.tex...
@@ -434,7 +432,7 @@ Hello mhasoba
 
 Code ran without errors
 
-Time consumed = 0.00658s
+Time consumed = 0.00705s
 
 ======================================================================
 Inspecting script file FirstBiblio.bib...
@@ -510,7 +508,7 @@ Done!
 
 Code ran without errors
 
-Time consumed = 0.00602s
+Time consumed = 0.00933s
 
 ======================================================================
 Inspecting script file boilerplate.sh...
@@ -542,7 +540,7 @@ This is a shell script!
 
 Code ran without errors
 
-Time consumed = 0.00449s
+Time consumed = 0.00979s
 
 ======================================================================
 ======================================================================
@@ -555,6 +553,6 @@ Ran into 5 errors
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 99.5
+Current Points for the Week = 98.5
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
