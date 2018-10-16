@@ -1,2 +1,4 @@
 *~ 
 *.tmp
+*.pcy
+__pycache__
