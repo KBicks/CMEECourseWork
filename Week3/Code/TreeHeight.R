@@ -18,3 +18,12 @@ for (i in Trees) {
 }
 TreeHeight <- data.frame(Trees, Height.m)
 write.csv(TreeHeight,"../Results/TreeHts.csv")
+Trees <- read.csv("../Data/trees.csv", header=TRUE)
+
+for (i in Trees) {
+    radians <- Trees$Angle.degrees * pi /180
+    height <- Trees$Distance.m * tan(radians)
+    Height.m <- c(height)
+}
+TreeHeight <- data.frame(Trees, Height.m)
+write.csv(TreeHeight,"../Results/TreeHts.csv")
