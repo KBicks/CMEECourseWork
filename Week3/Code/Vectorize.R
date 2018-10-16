@@ -11,5 +11,5 @@ SumAllElements <- function(M) {
     return (Tot) #give overall total
  }
 
- print(system.time(SumAllElements(M))) 
- print(system.time(sum(M))) 
+ print(system.time(SumAllElements(M)))
+ print(system.time(sum(M)))
