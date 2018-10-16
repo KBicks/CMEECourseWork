@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+"""Demonstrates definition of functions using if statements and for loops, for
+bird data in script."""
+
+__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
+__version__ = '3.5.2'
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),
@@ -5,6 +12,7 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Tachycineata bicolor','Tree swallow',20.2),
          )
 
+### Questions:
 #(1) Write three separate list comprehensions that create three different
 # lists containing the latin names, common names and mean body masses for
 # each species in birds, respectively. 
@@ -13,6 +21,7 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
 # before 1 !). 
 
 
+### Answers:
 
 ## (1) List comprehensions
 
