@@ -1,28 +1,33 @@
 #!/usr/bin/env python3
-"""Print each tuple on a separate line."""
+"""Ouput the two DNA sequences with the highest number of matches, with their
+number of matches, from a csv."""
 
 __author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
 __version__ = '3.5.2'
 
 import sys
+#import csv module to allow csv files to be read/written
 import csv
 
+#reads csv
 with open('../Data/seqs.csv','r') as f:
     csvread = csv.reader(f)
+    # create a list of sequences
     sourcedata = [x[0] for x in csvread]
 
+#set the two sequences required 
 seq1 = sourcedata[0]
 seq2 = sourcedata[1]
 # # Two example sequences to match
 
-#seq2 = "ATCGCCGGATTACGGG"
-#seq1 = "CAATTCGGAT"
+## If inputting sequences manually:
+    #seq2 = "ATCGCCGGATTACGGG"
+    #seq1 = "CAATTCGGAT"
 
 # Assign the longer sequence s1, and the shorter to s2
 # l1 is length of the longest, l2 that of the shortest
 
 # calculates length of both sequences
-
 l1 = len(seq1)
 l2 = len(seq2)
 # finds the longer sequence and assigns to s1
@@ -66,6 +71,7 @@ def calculate_score(s1, s2, l1, l2, startpoint):
 # calculate_score(s1, s2, l1, l2, 5)
 
 # now try to find the best match (highest score) for the two sequences
+# setting start values:
 my_best_align = None
 my_best_score = -1
 
@@ -78,6 +84,8 @@ for i in range(l1): # Note that you just take the last alignment with the highes
 print(my_best_align)
 print(s1)
 print("Best score:", my_best_score)
+# create an output string of alignment, sequence and best score
 outstr = "{}\n{}\nBest score: {}".format(my_best_align, s1, my_best_score)
+# write string to text file
 with open("../Results/best_score.txt", "w") as f:
     f.write(outstr)

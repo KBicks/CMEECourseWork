@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """Some function exemplifying the use of control statements"""
 
-#docstrings are considered part of the running code (normal components are stripped)
-#Hence you can access your docstrings at run time
-
 __author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
 __version__ = '3.5.2'
 

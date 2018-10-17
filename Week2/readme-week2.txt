@@ -31,7 +31,11 @@ The Code contains python code files as described:
     data from sets
     dictionary.py demonstrates how to populate a dictionary from a set
     tuple.py shows how to extract data and print from tuples
-    
+    align_seqs.py takes a csv input sequence and matches two sequences, counts the
+    number of matches, then outputs the sequences with the highest number of
+    matches into a txt file in results, with the number of matches.
+    oaks_debugme.py searches input csv for oak species and outputs them into a new
+    csv file in results.
 
 The Data directory contains files for testing the code scripts.
 The Results directory contains the outputs from code scripts.
