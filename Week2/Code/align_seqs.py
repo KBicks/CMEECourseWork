@@ -5,15 +5,24 @@ __author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
 __version__ = '3.5.2'
 
 import sys
+import csv
 
-# Two example sequences to match
-seq2 = "ATCGCCGGATTACGGG"
-seq1 = "CAATTCGGAT"
+with open('../Data/seqs.csv','r') as f:
+    csvread = csv.reader(f)
+    sourcedata = [x[0] for x in csvread]
+
+seq1 = sourcedata[0]
+seq2 = sourcedata[1]
+# # Two example sequences to match
+
+#seq2 = "ATCGCCGGATTACGGG"
+#seq1 = "CAATTCGGAT"
 
 # Assign the longer sequence s1, and the shorter to s2
 # l1 is length of the longest, l2 that of the shortest
 
 # calculates length of both sequences
+
 l1 = len(seq1)
 l2 = len(seq2)
 # finds the longer sequence and assigns to s1
@@ -69,8 +78,6 @@ for i in range(l1): # Note that you just take the last alignment with the highes
 print(my_best_align)
 print(s1)
 print("Best score:", my_best_score)
-
-if (__name__ == "__main__"):
-    # exit once status reaches main argument
-    status = main(sys.argv)
-    sys.exit(status)
+outstr = "{}\n{}\nBest score: {}".format(my_best_align, s1, my_best_score)
+with open("../Results/best_score.txt", "w") as f:
+    f.write(outstr)
