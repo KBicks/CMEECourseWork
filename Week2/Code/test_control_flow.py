@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-
 """Some function exemplifying the use of control statements"""
+
 #docstrings are considered part of the running code (normal components are stripped)
 #Hence you can access your docstrings at run time
 
 __author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '0.0.1'
+__version__ = '3.5.2'
 
 
 import sys
+#module for testing functions
 import doctest
 
 def even_or_odd(x=0): #if not specified x will = 0
@@ -85,4 +86,5 @@ def even_or_odd(x=0): #if not specified x will = 0
 #     sys.exit(status)
 ###########################################
 
+#runs embedded tests
 doctest.testmod() # To run embedded tests

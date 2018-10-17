@@ -11,10 +11,12 @@ birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Tachycineata bicolor','Tree swallow',20.2),
         )
 
+### Question
 # Birds is a tuple of tuples of length three: latin name, common name, mass.
 # write a (short) script to print these on a separate line or output block by species 
 # Hints: use the "print" command! You can use list comprehensions!
 
+### Answer
 for species in birds:
 # print subsets of the tuples to create separate lines
   print(species[0] + ',' + species[1] + ',' + str(species[2]))

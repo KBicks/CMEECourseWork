@@ -21,7 +21,17 @@ The Code contains python code files as described:
 
     control_flow.py, cfexercises1.py and cfexercises2.py demonstrate use of 
     control variables.
+    test_control_flow.py shows how to use doctest to test functions
+
     loops.py demonstrates the use of FOR loops and WHILE loops
+    oaks.py shows how list comprehensions can be used instead of loops
+
+    Practical tasks:
+    lc1.py and lc2.py show use of list comprehensions and for loops for subsetting
+    data from sets
+    dictionary.py demonstrates how to populate a dictionary from a set
+    tuple.py shows how to extract data and print from tuples
+    
 
 The Data directory contains files for testing the code scripts.
 The Results directory contains the outputs from code scripts.
