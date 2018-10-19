@@ -11,5 +11,8 @@ SumAllElements <- function(M) {
     return (Tot) #give overall total
  }
 
+ # comparison of the time taken using SumAllElements() and sum()
+ # longer method as runs a for loop
  print(system.time(SumAllElements(M)))
+ # quicker as draws on a program written C which is more primitive and faster to run
  print(system.time(sum(M)))
