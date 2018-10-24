@@ -1,5 +1,5 @@
 # applying functions to rows/columns of a matrix
-# using inbuilt function
+# using inbuilt functions
 
 M <- matrix(rnorm(100),10,10) # generate random matrix of 10x10
 

@@ -5,6 +5,7 @@ Ricker <- function(N0=1, r=1, K=10, generations=50)
 
   N <- rep(NA, generations)    # Creates a vector of NA
 
+  # defining equation for Ricker model
   N[1] <- N0
   for (t in 2:generations)
   {

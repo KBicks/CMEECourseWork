@@ -3,3 +3,6 @@
 *.pcy
 __pycache__
 *.Rhistory
+*.gz
+*.aux
+*.log
