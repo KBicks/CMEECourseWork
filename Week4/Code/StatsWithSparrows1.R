@@ -39,6 +39,7 @@ myMixedVector<- c(1,TRUE,FALSE,3,"help",1.2,TRUE,"notwhatIplanned")
 # Installing packages
 install.packages("lme4")
 library(lme4)
+# require is better than using library
 require(lme4)
 help(lme4)
 help(log)

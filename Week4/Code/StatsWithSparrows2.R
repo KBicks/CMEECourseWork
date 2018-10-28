@@ -87,3 +87,4 @@ text(2, 0.3, "1.96", col = "red", adj = 0)
 text(-2, 0.3, "-1.96", col = "red", adj = 1) 	
 #using Sex.1 gives values from header for y label as opposed to 1 and 0
 boxplot(d$Tarsus~d$Sex.1,col=c("red","blue"),ylab="Tarsus length (mm)")
+
