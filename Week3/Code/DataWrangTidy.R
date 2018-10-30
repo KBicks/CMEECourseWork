@@ -12,17 +12,20 @@ MyMetaData <- read.csv("../Data/PoundHillMetaData.csv",header = T, sep=";", stri
 require(dplyr)
 require(tidyr)
 ############# Inspect the dataset ###############
-# displays structure of object
+# displays structure of data including dimensions
+# same as the str() function
 dplyr::glimpse(MyData)
-# view data in table
-dplyr::tbl_df(MyData) #you can also do this
+# same as head but includes more info including dimensions
+dplyr::tbl_df(MyData) 
 dplyr::tbl_df(MyMetaData)
+# view data in table
+utils::View(MyData)
+
 
 ############# Transpose ###############
 # To get those species into columns and treatments into rows 
-MyData <- tidyr::gather(MyData) 
-head(MyData)
-dim(MyData)
+MyData <- t(MyData) 
+dplyr::tbl_df(MyData)
 
 ############# Replace species absences with zeros ###############
 MyData[MyData == ""] = 0
@@ -38,18 +41,14 @@ colnames(TempData) <- MyData[1,] # assign column names from original data
 ############# Convert from wide to long format  ###############
 
 # reduces data instead of separate counts - long format
-MyWrangledData <- melt(TempData, id=c("Cultivation", "Block", "Plot", "Quadrat"), 
-variable.name = "Species", value.name = "Count")
-
+MyWrangledData <- TempData %>% gather(., Species, Count, -Cultivation, 
+    -Block, -Plot, -Quadrat)
 # assign correct data types and set as factors
-MyWrangledData[, "Cultivation"] <- as.factor(MyWrangledData[, "Cultivation"])
-MyWrangledData[, "Block"] <- as.factor(MyWrangledData[, "Block"])
-MyWrangledData[, "Plot"] <- as.factor(MyWrangledData[, "Plot"])
-MyWrangledData[, "Quadrat"] <- as.factor(MyWrangledData[, "Quadrat"])
-MyWrangledData[, "Count"] <- as.numeric(MyWrangledData[, "Count"])
+MyWrangledData <- MyWrangledData %>% mutate(Cultivation = as.factor(Cultivation),
+    Block = as.factor(Block), Plot = as.factor(Block), 
+    Quadrat = as.factor(Quadrat), Count = as.integer(Count))
 
 dplyr::glimpse(MyWrangledData)
-head(MyWrangledData)
-dim(MyWrangledData)
+dplyr::tbl_df(MyWrangledData)
 
 ############# Start exploring the data (extend the script below)!  ###############
