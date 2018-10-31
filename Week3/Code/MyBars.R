@@ -1,5 +1,6 @@
 # Annotating plots
 
+require(ggplot2)
 a <- read.table("../Data/Results.txt", header = TRUE)
 
 a$ymin <- rep(0, dim(a)[1]) # append a column of zeros

@@ -8,4 +8,4 @@ MyFunction <- function(Arg1,Arg2) {
     return (c(Arg1,Arg2))
 }
 
-MyFunction(x,y) #function inputs
+MyFunction(3,18) #function inputs

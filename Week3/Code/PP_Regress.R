@@ -37,7 +37,7 @@ model.sum <- ldply(model.grouped, function(PredPrey){
 })
 
 F.statistic <- ldply(model.grouped, function(PredPrey) summary(PredPrey)$fstatistic[1])
-model.sum <- merge(model.sum, F.stat, by = c("Type.of.feeding.interaction","Predator.lifestage"),all=T)
+model.sum <- merge(model.sum, F.statistic, by = c("Type.of.feeding.interaction","Predator.lifestage"),all=T)
 
 names(model.sum)[3] <- "Regression.slope"
 names(model.sum)[4] <- "Regression.intercept"

@@ -16,6 +16,7 @@ names(ellDF) <- c("Real", "Imaginary") # rename the columns
 
 
 # plot the eigenvalues
+require(ggplot2)
 p <- ggplot(eigDF, aes(x = Real, y = Imaginary))
 p <- p +
   geom_point(shape = I(3)) +
