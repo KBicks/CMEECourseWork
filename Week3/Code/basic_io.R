@@ -1,4 +1,8 @@
-# Illustrates R input-output
+#!/usr/bin/env Rscript
+# Author: Katie Bickerton <k.bickerton18@imperial.ac.uk>
+# Desc: Illustrates R input-output
+# Date: Oct 2018
+
 # Run line by line and check inputs outputs to understand what is happening
 
 # Import csv file with headers
