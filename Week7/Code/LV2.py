@@ -71,7 +71,7 @@ p.title('Consumer-Resource population dynamics')
 p.annotate('r= {}\na= {}\nz= {}\ne= {}'.format(str(r),str(a),str(z),str(e)), xy=(0.5,10))
 # p.text(0.5,11, 'r= {}, a= {}, z= {}, e= {}'.format(str(r),str(a),str(z),str(e)))
 #show figure
-p.show()
+# p.show()
 
 # save figure to pdf in Results
 f1.savefig('../Results/LV_model_K.pdf')
