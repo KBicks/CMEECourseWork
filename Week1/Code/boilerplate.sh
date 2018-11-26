@@ -1,7 +1,7 @@
-#!/bin/bash - tells interpreter this is a bash script
+#!/bin/bash 
 # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: boilerplate.sh
-# Desc: simple boilerplate for shell scripts
+# Desc: A simple boilerplate exemplifying shell scripting.
 # Arguments: none
 # Date: 02 Oct 2018
 
