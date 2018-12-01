@@ -1,1 +1,0 @@
-This directory contains code files for Week 5 tasks.

@@ -1,1 +1,0 @@
-This directory contains data files for Week 4 tasks.
