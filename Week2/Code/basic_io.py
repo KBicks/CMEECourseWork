@@ -2,11 +2,11 @@
 """Demonstrates inputing text files into python: 
 File Input prints first every line in a file, then every line apart from blank lines,
 File Output generates a list of a specified range, then saves it with each element on a new line,
-Storing Files using the pickle module"""
-
-__author__ = "Katie Bickerton (k.bickerton18@imperial.ac.uk)"
+Storing Files using the pickle module."""
+__appname__ = "basic_io.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
 __version__ = "3.5.2"
-
+__date__ = "09-Oct-2018"
 
 ##############
 # FILE INPUT

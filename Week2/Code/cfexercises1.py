@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 """Demonstration of different control functions."""
+__appname__ = "cfexercises1.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 for i in range(3, 17): #prints hello for every i in range
     print("hello")

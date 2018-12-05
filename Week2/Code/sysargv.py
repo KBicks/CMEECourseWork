@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Using module sys, gives name, number of arguments and lists arguments of a script."""
-
-__author__="Katie Bickerton (k.bickerton18@imperial.ac.uk)"
-__version__="3.5.2"
+"""Using module sys, gives name, number of arguments and lists arguments 
+of a script."""
+__appname__ = "sysargv.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "10-Oct-2018"
 
 # import module sys
 import sys

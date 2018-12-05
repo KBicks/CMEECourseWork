@@ -2,6 +2,11 @@
 """Demonstrates how list for loops and list comprehensions can be used for
 the same tasks - outputing oak species from list and changing output to upper
 case."""
+__appname__ = "oaks.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
+
 
 taxa = ["Quercus robur",
         "Fraxinus excelsior",
@@ -11,14 +16,16 @@ taxa = ["Quercus robur",
         ]
 
 def is_an_oak(name):
-    #function defining what an oak is
+    """Searches for oak genus and returns in lower case."""
     return name.lower().startswith("quercus ")
 
 ###Two methods for ouputing oak species in list:
 ##Using for loops
-oaks_loops = set() 
+oaks_loops = set()
+# for all species in data 
 for species in taxa:
     if is_an_oak(species):
+            # add oaks to set
         oaks_loops.add(species)
 print(oaks_loops)
 

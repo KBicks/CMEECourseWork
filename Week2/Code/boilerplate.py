@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Boilerplate script to demonstrate how a python code runs."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
-
+"""Boilerplate script to demonstrate how to write functions in python."""
+__appname__ = "boilerplate.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "09-Oct-2018"
 
 ## imports ##
 import sys # module to interface program with operating system

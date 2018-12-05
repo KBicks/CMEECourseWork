@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 """Demonstration of for loops and while loops."""
+__appname__ = "loops.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 #FOR loops in Python
 # Prints values of i up to range specified 
@@ -29,4 +33,3 @@ while z < 100:
 b = True
 while b:
     print("GERONIMO! Infinite loop! ctrl+c to stop!")
-    

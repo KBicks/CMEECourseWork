@@ -1,12 +1,12 @@
 ### CMEE Coursework Week 3 README
 
-*Introduction:* This directory contains coursework files from week 1 of the CMEE course. This week included an introduction to R and data management, exploration and visualisation using R. Some scripts used to run R scripts are written in bash and written analysis has been carried out in LaTeX.
-
+*Introduction:* This directory contains coursework files from week 3 of the CMEE course. This week included an introduction to R and data management, exploration and visualisation using R. Some scripts used to run R scripts are written in bash and written analysis has been carried out in LaTeX.
+  
 *Contents:* There are three directories:
 1. **Code** - script files in R, bash and LaTeX.
 2. **Data** - data used to test code scripts.
 3. **Results** - location for output files produced by script files.
-
+   
 *Code File Descriptions:*  
 Biological Computing in R:  
 **sample.R** - Exemplifies generating a vector of 100 random values using a function and the command 'sample()', then how to run function using vectorization or a for loop.  

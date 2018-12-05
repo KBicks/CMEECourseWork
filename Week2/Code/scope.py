@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Demonstrates that global variables appear outside the function, whereas
 variables set inside the function do not alter variables outside the function."""
+__appname__ = "scope.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "10-Oct-2018"
 
 # Part 1
 # set value of variables
