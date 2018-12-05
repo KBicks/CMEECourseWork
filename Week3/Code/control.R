@@ -6,6 +6,8 @@
 # Arguments: none
 # Date: Oct 2018
 
+rm(list=ls())
+
 ## If statement example
 # initial value of a set
 a <- TRUE

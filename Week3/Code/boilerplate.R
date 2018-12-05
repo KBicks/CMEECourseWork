@@ -5,6 +5,8 @@
 # Arguments: Arg1, Arg2 -> no restrictions on type.
 # Date: 15 Oct 2018
 
+rm(list=ls())
+
 # A boilerplate R script
 
 # Make a function called 'MyFunction' which required 2 arguments

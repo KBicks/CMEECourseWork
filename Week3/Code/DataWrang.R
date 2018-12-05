@@ -1,3 +1,14 @@
+#!/usr/bin/env Rscript
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: DataWrang.R
+# Desc: Exemplifies methods to explore data, and transfers from wide to long
+#       format.
+# Arguments: none
+# Date: 22 Oct 2018
+
+rm(list=ls())
+
+
 ################################################################
 ################## Wrangling the Pound Hill Dataset ############
 ################################################################
@@ -53,6 +64,7 @@ MyWrangledData[, "Plot"] <- as.factor(MyWrangledData[, "Plot"])
 MyWrangledData[, "Quadrat"] <- as.factor(MyWrangledData[, "Quadrat"])
 MyWrangledData[, "Count"] <- as.numeric(MyWrangledData[, "Count"])
 
+# view summary of data again
 str(MyWrangledData)
 head(MyWrangledData)
 dim(MyWrangledData)

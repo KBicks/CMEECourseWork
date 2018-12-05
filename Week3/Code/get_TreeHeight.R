@@ -7,6 +7,8 @@
 # Arguments: Input <- csv file, from command line.
 # Date: 16 Oct 2018
 
+rm(list=ls())
+
 # set input file to be taken from the command line
 Input = commandArgs(trailingOnly = TRUE)
 

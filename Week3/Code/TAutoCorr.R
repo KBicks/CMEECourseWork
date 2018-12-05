@@ -1,7 +1,13 @@
-# iterates a function for correlation between temperatures over successive
-# years
+#!/usr/bin/env Rscript
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: TAutoCorr.R
+# Desc: # iterates a function for correlation between temperatures over successive
+        # years
+# Arguments: none
+# Date: 22 Oct 2018
 
 rm(list=ls())
+
 load("../Data/KeyWestAnnualMeanTemperature.RData")
 # str(ats)
 # plot(ats)

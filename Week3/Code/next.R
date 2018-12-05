@@ -5,6 +5,8 @@
 # Arguments: i <- numeric
 # Date: 15 Oct 2018
 
+rm(list=ls())
+
 # for i in the range 1-10
 for (i in 1:10) {
     # if i is a multiple of 2

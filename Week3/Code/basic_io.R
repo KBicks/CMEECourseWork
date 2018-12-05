@@ -5,6 +5,8 @@
 # Arguments: none
 # Date: 15 Oct 2018
 
+rm(list=ls())
+
 # Import csv file with headers
 MyData = read.csv("../Data/trees.csv", header = TRUE)
 # Write input as a new file called MyData, and output to Results directory

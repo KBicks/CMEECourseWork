@@ -1,3 +1,14 @@
+#!/usr/bin/env Rscript
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: DataWrangTidy.R
+# Desc: Exemplifies data exploration and switching from wide to long format using
+#       the packages 'tidyr' and 'dplyr'.
+# Arguments: none
+# Date: 22 Oct 2018
+
+rm(list=ls())
+
+
 ################################################################
 ################## Wrangling the Pound Hill Dataset ############
 ################################################################

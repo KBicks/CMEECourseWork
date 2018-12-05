@@ -7,6 +7,8 @@
 # Arguments: none
 # Date: 15 Oct 2018
 
+rm(list=ls())
+
 ## run a simulation that involves sampling from a population
 
 # generate ramdom population

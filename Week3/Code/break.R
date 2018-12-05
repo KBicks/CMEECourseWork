@@ -5,6 +5,7 @@
 # Arguments: i <- numeric 
 # Date: 15 Oct 2018
 
+rm(list=ls())
 
 # set initial value of i
 i <- 0 

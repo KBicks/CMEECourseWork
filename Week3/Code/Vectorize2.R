@@ -1,3 +1,11 @@
+#!/usr/bin/env Rscript
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: Vectorize.R
+# Desc: Runs a stochastic version of the Ricker model, comparing methods using
+#       for loops and vectorization.
+# Arguments: p0 <- intial population
+# Date: 20 Oct 2018
+
 # Runs the stochastic (with gaussian fluctuations) Ricker Eqn .
 #remove R history
 rm(list=ls())

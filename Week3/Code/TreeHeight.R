@@ -6,6 +6,8 @@
 # Arguments: degrees -> angle in radians from top, distance -> distance to base of tree
 # Date: 15 Oct 2018
 
+rm(list=ls())
+
 # Script to calculate tree height from distance to base and angle to top
 
 # Equation for calculation:

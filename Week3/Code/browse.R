@@ -1,4 +1,11 @@
-# example of using browser() to debug a script in R
+#!/usr/bin/env Rscript
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: browse.R
+# Desc: Exemplifying browser() function to debug R code.
+# Arguments: N <- vector
+# Date: 18 Oct 2018
+
+rm(list=ls())
 
 Exponential <- function(N0 = 1, r=1, generations = 10) {
     #run a simulation of exponential growth
