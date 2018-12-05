@@ -1,14 +1,24 @@
-# if and else statements and stopping the code at a certain parameter
+#!/usr/bin/env Rscript
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: break.R
+# Desc: Exemplifying use of 'break' in while, if and else statements.
+# Arguments: i <- numeric 
+# Date: 15 Oct 2018
 
-i <- 0 #initialize i
+
+# set initial value of i
+i <- 0 
+# while i is less than infinity
     while(i<Inf) {
-        # once i reaches 20, break
+        # when i is 20
         if (i==20) {
+            # break while loop
             break } 
-        else {
-            # if not 20, print
+        # if i is not 20
+        else { 
+            # print the value of i and start a new line
             cat("i equals " , i, "\n")
+            # increase value of i by 1 each loop
             i <- i+1 
-        
         }
     }
