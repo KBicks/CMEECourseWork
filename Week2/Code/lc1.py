@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Demonstrates definition of functions using if statements and for loops, for
-bird data in script."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+"""Exemplifies use of list comprehensions and conventional loops to subset
+information from a list."""
+__appname__ = "lc1.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),

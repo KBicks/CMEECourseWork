@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Finds oak species from a csv file and output these into a new csv file of oak
 species only."""
+__appname__ = "oaks_debugme.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "14-Oct-2018"
 
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
-
+# required modules
 import csv
 import sys
 import doctest

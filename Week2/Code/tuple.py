@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Print each tuple on a separate line."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+__appname__ = "tuple.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),

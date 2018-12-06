@@ -22,6 +22,14 @@ Biological computing in Python 1:
 **cfexercises1.py** - Demonstration of different control functions.  
 **loops.py** - Demonstration of for loops and while loops.  
 **oaks.py** - Demonstrates how list for loops and list comprehensions can be used for the same tasks - outputing oak species from list and changing output to upper case.  
+**test_control_flow.py** - Functions exemplifying the use of control statements.  
+**debugme.py** - Code with error to practise debugging.  
   
 Biological computing in Python 1 Practicals:  
 **cfexercises2.py** - Demonstrates definition of functions using if statements and for loops, includes test values.  
+**lc1.py** - Exemplifies use of list comprehensions and conventional loops to subset information from a list.  
+**lc2.py** - Exemplifies use of list comprehensions and for loops to manipulate tuples.  
+**dictionary.py** - Populate a dictionary with order as the key, and each species sorted into order.  
+**tuple.py** - Print each tuple on a separate line.  
+**align_seqs.py** - Ouput the two DNA sequences with the highest number of matches, with their number of matches, from a csv.  
+**oaks_debugme.py** - Finds oak species from a csv file and output these into a new csv file of oak species only.  

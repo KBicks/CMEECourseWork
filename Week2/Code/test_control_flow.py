@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Some function exemplifying the use of control statements"""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
-
+"""Functions exemplifying the use of control statements."""
+__appname__ = "test_control_flow.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 import sys
 #module for testing functions

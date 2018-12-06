@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Populated a dictionary with order as the key, and each species sorted
+"""Populate a dictionary with order as the key, and each species sorted
 into order."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+__appname__ = "dictionary.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 taxa = [ ('Myotis lucifugus','Chiroptera'),
          ('Gerbillus henleyi','Rodentia',),

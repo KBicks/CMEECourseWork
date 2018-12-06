@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Demonstrates definition of functions using if statements and for loops, for
-rainfall data in script."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+"""Exemplifies use of list comprehensions and for loops to manipulate tuples."""
+__appname__ = "lc2.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 # Average UK Rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
@@ -38,6 +38,7 @@ rainfall = (('JAN',111.4),
 
 # selects tuples where rainfall is greater than 100
 def over100(name):
+    """Returns data points that are greater than 100."""
     return name[1]>100
 
 greaterthan100_lc = set([month for month in rainfall if over100(month)])
@@ -47,6 +48,7 @@ print(greaterthan100_lc)
 
 # selects months only where rainfall is less than 50mm 
 def under50(name):
+    """Selects and outputs data points less than 50."""
     return name[1]<50
 
 lessthan50_lc = set([month[0] for month in rainfall if under50(month)])
@@ -57,6 +59,7 @@ print(lessthan50_lc)
 # amount of rain > 100mm
 
 def over100(name):
+    """Returns data points that are greater than 100."""
     return name[1]>100
 
 # set to input results
@@ -70,6 +73,7 @@ print(greaterthan100_loop)
 ## Conventional loop for part (2) - create a list of months where rain < 50mm
 
 def under50(name):
+    """Selects and outputs data points less than 50."""
     return name[1]<50
 
 lessthan50_loop = set()

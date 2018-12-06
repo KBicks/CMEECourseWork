@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Ouput the two DNA sequences with the highest number of matches, with their
 number of matches, from a csv."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+__appname__ = "align_seqs.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "14-Oct-2018"
 
 import sys
 #import csv module to allow csv files to be read/written
@@ -42,6 +43,7 @@ else:
 # A function that computes a score by returning the number of matches starting
 # from arbitrary startpoint (chosen by user)
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """Computes number of matches and returns score based on matches."""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
