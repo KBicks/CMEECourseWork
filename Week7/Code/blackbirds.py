@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+"""Searches and extracts Kingdom, Phylum and Species from a text file into a string."""
+__appname__ = "blackbirds.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "15-Nov-2018"
+
 import re
 
 # Read the file (using a different, more python 3 way, just for fun!)
@@ -17,12 +24,16 @@ text = text.decode('ascii', 'ignore') # Now decode back to string
 # Now extend this script so that it captures the Kingdom, Phylum and Species
 # name for each species and prints it out to screen neatly.
 
+# captures Kingdom, Phylum and Species
 King_Phy_Sp = r"Kingdom\s(\w+).+?Phylum\s(\w+).+?Species\s(\w+\s\w+)"
+# searches dataframe for matches to the expression above
 search = re.findall(King_Phy_Sp,text)
 
+# sets header new for data frame
 header = "Kingdom, Phylum, Species\n"
-
+# make a string of the header and the search results
 string = header + "\n".join([", ".join(x) for x in search])
+# prints results
 print(string)
 
 # Hint: you may want to use re.findall(my_reg, text)... Keep in mind that there

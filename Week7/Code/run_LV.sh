@@ -1,4 +1,10 @@
-#!/usr/bin/bash
+#!/bin/bash
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: run_LV.sh
+# Desc: Runs Lotka-Volterra simulations in python.
+# Arguments: none 
+# Date: 15 Nov 2018
+
 
 echo "Running profile on r-selected Lotka-Volterra model."
 ipython3 -m cProfile LV1.py

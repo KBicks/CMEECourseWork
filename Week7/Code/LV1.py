@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Continuous time model showing population densities for resources and 
-consumers, over a set time period. Outputs figures showing the variation 
-in population densities over time and a phase portrait for the system."""
-
-__author__ = "Katie Bickerton (k.bickerton18@imperial.ac.uk)"
+"""Continuous time Lotka-Volterra model showing population densities for 
+resources and consumers, over a set time period. Outputs figures showing 
+the variation in population densities over time and a phase portrait for 
+the system."""
+__appname__ = "LV1.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
 __version__ = "3.5.2"
+__date__ = "19-Nov-2018"
 
 import scipy as sc
 import scipy.integrate as integrate

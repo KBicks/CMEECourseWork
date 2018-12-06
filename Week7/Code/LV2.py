@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
-"""Continuous time model showing population densities for resources and 
-consumers, over a set time period, including carrying capacity. Outputs 
-figures showing the variation in population densities over time and a 
+"""Continuous time Lotka-Volterra model showing population densities for 
+resources and consumers, over a set time period, including carrying capacity. 
+Outputs figures showing the variation in population densities over time and a 
 phase portrait for the system."""
-
-__author__ = "Katie Bickerton (k.bickerton18@imperial.ac.uk)"
+__appname__ = "LV2.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
 __version__ = "3.5.2"
+__date__ = "14-Nov-2018"
 
+# import necessary modules
 import sys
 import scipy as sc
 import scipy.integrate as integrate
+
 # set default values, which starting t value, and define function
 def dCR_dt(pops, t=0):
-
+    """Logistic Lotka-Volterra model in continuous time."""
     #column for each R and C
     R = pops[0]
     C = pops[1]
@@ -23,7 +26,7 @@ def dCR_dt(pops, t=0):
     # generates vector that stores population values for each timestep
     return sc.array([dRdt,dCdt])
 
-# output is a function
+# check the function is a function
 type(dCR_dt)
 
 # taking values from the command line for parameters 

@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+"""Exemplifies use of regular expressions in python."""
+__appname__ = "regexs.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "15-Nov-2018"
+
 import re
 
 my_string = "a given string"
