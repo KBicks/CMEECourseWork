@@ -636,23 +636,19 @@ fern_2 <- function(start_pos,angle,length,min_length=0.02, dir=1){
 
 #### Challenge Questions
 
-### A) 
-
-### B)
-
 ### E) Chaos game continued:
 
-# challenge E - different initial starting point
+# drawing Sierpinski's Gasket
 challenge_E_initial <- function(){
   # set the three options for points
   A <- c(0, 0)
-  B <- c(3, 4)
-  C <- c(4, 1)
+  B <- c(2, 0)
+  C <- c(1, sqrt(3))
   # create a list of the three points to choose from
   point_list <- list(A, B, C)
   # set starting point
-  start <- c(1, 2)
-  for (i in 1:1000) {
+  start <- c(0, 0)
+  for (i in 1:10000) {
     # randomly select one of the points to draw towards
     random_point <- sample(3, 1)
     target <- unlist(point_list[random_point])
@@ -666,32 +662,8 @@ challenge_E_initial <- function(){
   }
 }
 
-# test function:
-plot(1, type = "n", xlab="", ylab="",xlim = c(0,10), ylim=c(0,10), xaxt="n",yaxt="n",bty="n")
-challenge_E_initial()
-
-challenge_E_initial <- function(){
-  # set the three options for points
-  A <- c(0, 0)
-  B <- c(3, 4)
-  C <- c(4, 1)
-  # create a list of the three points to choose from
-  point_list <- list(A, B, C)
-  # set starting point
-  start <- c(0, 0)
-  for (i in 1:1000) {
-    # randomly select one of the points to draw towards
-    random_point <- sample(3, 1)
-    target <- unlist(point_list[random_point])
-    # generate next point to draw towards
-    x <- max(start[1], target[1]) - ((max(start[1], target[1]) - min(start[1], target[1]))/2)
-    y <- max(start[2], target[2]) - ((max(start[2],  target[2]) - min(start[2], target[2]))/2)
-    # plot the new point
-    points(x, y, cex <- 0.05)
-    # overwrites initial starting points with new for next iteration
-    start <- c(x, y)
-  }
-}
-### F)
-
-### G)
+# # test function:
+# pdf("../Results/s_gasket.pdf")
+# plot(1, type = "n", xlab="", ylab="",xlim = c(0,2), ylim=c(0,2), xaxt="n",yaxt="n",bty="n")
+# challenge_E_initial()
+# dev.off()
