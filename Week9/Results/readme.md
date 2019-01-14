@@ -1,1 +1,1 @@
-*This directory contains outputs from code files. This readme is present to maintain directory structure as the coursework requires the results directory to be empty, however code files are directed to output files into this location.*
+*This directory contains outputs from code files.*

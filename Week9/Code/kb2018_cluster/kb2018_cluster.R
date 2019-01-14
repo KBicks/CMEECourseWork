@@ -5,13 +5,7 @@
 rm(list=ls())
 graphics.off()
 
-iter <- as.numeric(Sys.getenv("PBS_ARRAY_INDEX"))
-if(is.na(iter)){
-    iter <- sample(1:100,1)
-}
-set.seed(iter)
-size_vector <- c(500,1000,2500,5000)
-size <- size_vector[(iter %% 4)+1]
+## Required code
 
 # Neutral model simulation where a random individual dies and is replaced
 # with the off-spring of another individual in the community
@@ -113,40 +107,61 @@ initialise_min <- function(size){
 
 cluster_run <- function(speciation_rate,size,wall_time,interval_rich,interval_oct,burn_in_generations,output_file_name){
     # starts timer for function
-    time <- proc.time()[3]
-    # sets initial generation value as 1
-    i <-1
+    time1 <- proc.time()[3]
     # initialises community of input size, with minimum diversity
     community <- initialise_min(size)
+    # record initial time
+    time0 <- proc.time()[3]
+    # sets initial generation value as 1
+    count <-1
+    # convert the time to seconds
+    wall_time_s <- 60*wall_time
     # calculates initial species richness which should be 1
     species <- species_richness(community)
     # set an empty list for octave values
-    octbin <- list()
+    octbin <- list(octaves(species_abundance(community)))
     # sets first element of list to the octave bins of initial community abundances
-    octbin[[1]] <- octaves(species_abundance(community))
     # while simulation time is less than the time limit (converted into seconds)
-    while(wall_time*60 > (proc.time()[3]-time)){
+    while((proc.time()[3]-time0) < wall_time_s){
         # loop through generations with specified population and speciation rates
         community<-neutral_generation_speciation(community,speciation_rate)
+        # moves to next interation
+        count <- count + 1 
         # while the generation is within the specified burn in generations and in the specified interval
-        if((i<=burn_in_generations) && (i %% interval_rich == 0)){
+        if((count<=burn_in_generations)&(count%%interval_rich == 0)){
             # calculate species richness and add to vector
-            species <- c(species, species_richness(community))
+            species <- append(species,species_richness(community))
         }
         # if generation is within interval
-        if(i %% interval_oct == 0){
+        if(count %% interval_oct == 0){
             # calculate octave bins and add to next position in list
-            octbin[[length(octbin)+1]] <- octaves(species_abundance(community))
+            octbin <- c(octbin, list(octaves(species_abundance(community))))
         }
-    # initiate next generation
-    i <- i+1
     }
-    # record the final time - subtracting current from starting time
-    endtime <- proc.time()[3] - time
+    end_community <- community
+    totaltime <- proc.time()[3] - time1
     # save outputs of the simulation into an rdata file with name specified in the command line
-    save(species,octbin,community,endtime,speciation_rate,size,wall_time,interval_rich,interval_oct,burn_in_generations, file=sprintf("../Results/%s.rda",paste(output_file_name,iter, sep = "_")))
+    parameters <- data.frame(speciation_rate,size,wall_time,interval_rich,interval_oct,burn_in_generations)
+    save(parameters,species,octbin,end_community,totaltime, file=sprintf("%s.rda",paste(output_file_name,iter,sep="_")))
 }
 
-# testing:
-# cluster_run(0.04,100,0.1,2,20,10,"kb2018_cluster_results")
 
+# for running on the cluster
+iter <- as.numeric(Sys.getenv("PBS_ARRAY_INDEX"))
+
+# for use locally
+if(is.na(iter)){
+    iter <- sample(1:100,1)
+}
+
+set.seed(iter)
+if(iter%%4==1){
+    J=500
+}else if(iter%%4==2){
+    J=1000
+}else if(iter%%4==3){
+    J=2500
+}else {J=5000}
+
+# run the function
+cluster_run(0.004686, J, 11.5*60, 1,round(J/10),J*8,"kb2018_cluster_results")
