@@ -391,7 +391,7 @@ cluster_run <- function(speciation_rate,size,wall_time,interval_rich,interval_oc
 # load all Rdata files in directory
 
 question_20 <- function(){
-    cluster_results = list.files(path = "../Results", pattern = "*.rda")
+    cluster_results = list.files(path = "../Results/kb2018_cluster/", pattern = "*.rda")
 
 # create blank vectors for each community size used
 size_500 = c()
@@ -401,7 +401,7 @@ size_5000 = c()
 
 # for every file
 for(i in cluster_results){
-    files = paste0("../Results", i)
+    files = paste0("../Results/", i)
     load(files)
     # add values to vector for each size
     switch(as.character(size),
@@ -639,7 +639,7 @@ fern_2 <- function(start_pos,angle,length,min_length=0.02, dir=1){
 ### E) Chaos game continued:
 
 # drawing Sierpinski's Gasket
-challenge_E_initial <- function(){
+challenge_E <- function(){
   # set the three options for points
   A <- c(0, 0)
   B <- c(2, 0)
