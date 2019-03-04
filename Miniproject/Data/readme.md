@@ -1,1 +1,0 @@
-*This directory contains data files used by code files. This readme is present to maintain directory structure as data files are too large to be put under version control.*
