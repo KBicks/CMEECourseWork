@@ -9,13 +9,13 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 1.63 MiB on disk 
+Your Git repo size this week is about 4.24 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week1, Assessment, Week2, .git, Week3
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week5, Week2, Week9, Week4, .git, Miniproject, Week3, Project
 
-Found the following files in parent directory: README.txt, .gitignore
+Found the following files in parent directory: .gitignore, readme.md
 
 Checking for key files in parent directory...
 
@@ -27,19 +27,33 @@ Printing contents of .gitignore:
 *.tmp
 *.pcy
 __pycache__
+*.Rhistory
+*.gz
+*.aux
+*.log
+*.blg
+*.bbl
 **********************************************************************
 
-Found README in parent directory, named: README.txt
+Found README in parent directory, named: readme.md
 
-Printing contents of README.txt:
+Printing contents of readme.md:
 **********************************************************************
-My CMEE Coursework Repository
-**********************************************************************
+### CMEE Coursework Repository 2018/19 README
+  
+*Author:* Katie Bickerton
+  
+*Contents:*  
+**Week{1-9}** - exercises from the taught content of the course.  
+**Miniproject** - script and data files for the CMEE mini-project, (this is also the week 8 directory).  
+**Project** - script and data files for the 9 month research project.  
+**Assessment** - feedback on the taught content from the assessor.  
+**.gitignore** - file types within the home directory but not kept under version control.  **********************************************************************
 
 ======================================================================
 Looking for the weekly directories...
 
-Found 3 weekly directories: Week1, Week2, Week3
+Found 8 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week9
 
 The Week2 directory will be assessed 
 
@@ -52,59 +66,52 @@ Assessing WEEK2...
 
 Found the following directories: Code, Data, Sandbox, Results
 
-Found the following files: readme-week2.txt
+Found the following files: readme.md
 
 Checking for readme file in weekly directory...
 
-Found README in parent directory, named: readme-week2.txt
+Found README in parent directory, named: readme.md
 
-Printing contents of readme-week2.txt:
+Printing contents of readme.md:
 **********************************************************************
-CMEE Course Work Week 2 Directory
+### CMEE Coursework Week 2 README
 
-This directory contains four directories:
-    1. Code
-    2. Data
-    3. Results
-    4. Sandbox
-
-The Code contains python code files as described:
-    .py scripts are python code files
-    basic_io.py demonstrates data outputs, inputs and storage in python
-    basic_csv.py demonstrates manipulation, including subsetting, of csv files
+*Introduction:* This directory contains coursework files from week 2 of the CMEE course. This week included an introduction to python, and applications described in the scripts below.
+  
     
-    boilerplate.py demonstrates use of functions to write a program that can 
-    be imported as a module and run as a script
-    using_name.py demonstrates use of setting __name__ variable to __"main"__ to
-    allow the program to run itself and be imported as a module
-    sysargv.py uses the sys module to output information about the script
-    scopy.py demonstrates that variables only act within a function unless set as 
-    global.
+*Contents:* There are four directories:
+1. **Code** - script files in python.
+2. **Data** - data used to test script files and referred to within some scripts.
+3. **Results** - location for output files produced by script files.
+4. **Sandbox** - practise and test files.
+  
+  
+*Code File Descriptions:*  
+Biological computing in Python 1:  
+**basic_io.py** - Demonstrates inputing text files into python: File Input prints first every line in a file, then every line apart from blank lines, File Output generates a list of a specified range, then saves it with each element on a new line, Storing Files using the pickle module.  
+**basic_csv.py** - Reads and prints a csv file, then writes specified components of the csv to a new csv.  
+**boilerplate.py** - Boilerplate script to demonstrate how to write functions in python.  
+**using_name.py** - Demonstration of using __name__==__"main"__ to write a program that can run itself, and be imported by another module.  
+**sysargv.py** - Using module sys, gives name, number of arguments and lists arguments of a script.  
+**scope.py** - Demonstrates that global variables appear outside the function, whereas variables set inside the function do not alter variables outside the function.  
+**control_flow,py** - Demonstrating the use of control statements.  
+**cfexercises1.py** - Demonstration of different control functions.  
+**loops.py** - Demonstration of for loops and while loops.  
+**oaks.py** - Demonstrates how list for loops and list comprehensions can be used for the same tasks - outputing oak species from list and changing output to upper case.  
+**test_control_flow.py** - Functions exemplifying the use of control statements.  
+**debugme.py** - Code with error to practise debugging.  
+  
+Biological computing in Python 1 Practicals:  
+**cfexercises2.py** - Demonstrates definition of functions using if statements and for loops, includes test values.  
+**lc1.py** - Exemplifies use of list comprehensions and conventional loops to subset information from a list.  
+**lc2.py** - Exemplifies use of list comprehensions and for loops to manipulate tuples.  
+**dictionary.py** - Populate a dictionary with order as the key, and each species sorted into order.  
+**tuple.py** - Print each tuple on a separate line.  
+**align_seqs.py** - Ouput the two DNA sequences with the highest number of matches, with their number of matches, from a csv.  
+**oaks_debugme.py** - Finds oak species from a csv file and output these into a new csv file of oak species only.  
+**********************************************************************
 
-    control_flow.py, cfexercises1.py and cfexercises2.py demonstrate use of 
-    control variables.
-    test_control_flow.py shows how to use doctest to test functions
-
-    loops.py demonstrates the use of FOR loops and WHILE loops
-    oaks.py shows how list comprehensions can be used instead of loops
-
-    Practical tasks:
-    lc1.py and lc2.py show use of list comprehensions and for loops for subsetting
-    data from sets
-    dictionary.py demonstrates how to populate a dictionary from a set
-    tuple.py shows how to extract data and print from tuples
-    align_seqs.py takes a csv input sequence and matches two sequences, counts the
-    number of matches, then outputs the sequences with the highest number of
-    matches into a txt file in results, with the number of matches.
-    oaks_debugme.py searches input csv for oak species and outputs them into a new
-    csv file in results.
-
-The Data directory contains files for testing the code scripts.
-The Results directory contains the outputs from code scripts.
-The Sandbox directory contains practise and test files.**********************************************************************
-
-Found following files in results directory: JustOaksData.csv, best_score.txt...
-ideally, Results directory should be empty other than, perhaps, a readme. 
+Found following files in results directory: readme.md...
 
 Found 19 code files: lc2.py, boilerplate.py, basic_csv.py, cfexercises2.py, dictionary.py, debugme.py, scope.py, cfexercises1.py, tuple.py, basic_io.py, lc1.py, oaks_debugme.py, oaks.py, loops.py, using_name.py, align_seqs.py, sysargv.py, control_flow.py, test_control_flow.py
 
@@ -117,11 +124,11 @@ Inspecting script file lc2.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Demonstrates definition of functions using if statements and for loops, for
-rainfall data in script."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+"""Exemplifies use of list comprehensions and for loops to manipulate tuples."""
+__appname__ = "lc2.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 # Average UK Rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
@@ -156,6 +163,7 @@ rainfall = (('JAN',111.4),
 
 # selects tuples where rainfall is greater than 100
 def over100(name):
+    """Returns data points that are greater than 100."""
     return name[1]>100
 
 greaterthan100_lc = set([month for month in rainfall if over100(month)])
@@ -165,6 +173,7 @@ print(greaterthan100_lc)
 
 # selects months only where rainfall is less than 50mm 
 def under50(name):
+    """Selects and outputs data points less than 50."""
     return name[1]<50
 
 lessthan50_lc = set([month[0] for month in rainfall if under50(month)])
@@ -175,6 +184,7 @@ print(lessthan50_lc)
 # amount of rain > 100mm
 
 def over100(name):
+    """Returns data points that are greater than 100."""
     return name[1]>100
 
 # set to input results
@@ -188,6 +198,7 @@ print(greaterthan100_loop)
 ## Conventional loop for part (2) - create a list of months where rain < 50mm
 
 def under50(name):
+    """Selects and outputs data points less than 50."""
     return name[1]<50
 
 lessthan50_loop = set()
@@ -203,24 +214,19 @@ lc2.py is a Python script file;
 
 Found one or more doctrings!
 
-Missing docstrings in one more functions!
-.5 pt deducted per missing docstring
-
-Current Points = 95.5
-
 Output (only first 500 characters): 
 
 **********************************************************************
-set([('JAN', 111.4), ('AUG', 140.2), ('DEC', 142.2), ('FEB', 126.1), ('NOV', 128.4)])
-set(['MAR', 'SEP'])
-set([('JAN', 111.4), ('AUG', 140.2), ('DEC', 142.2), ('FEB', 126.1), ('NOV', 128.4)])
-set(['MAR', 'SEP'])
+{('DEC', 142.2), ('NOV', 128.4), ('FEB', 126.1), ('JAN', 111.4), ('AUG', 140.2)}
+{'MAR', 'SEP'}
+{('DEC', 142.2), ('NOV', 128.4), ('FEB', 126.1), ('JAN', 111.4), ('AUG', 140.2)}
+{'MAR', 'SEP'}
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.01283s
+Time consumed = 0.05302s
 
 ======================================================================
 Inspecting script file boilerplate.py...
@@ -228,11 +234,11 @@ Inspecting script file boilerplate.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Boilerplate script to demonstrate how a python code runs."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
-
+"""Boilerplate script to demonstrate how to write functions in python."""
+__appname__ = "boilerplate.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "09-Oct-2018"
 
 ## imports ##
 import sys # module to interface program with operating system
@@ -267,7 +273,7 @@ This is a boilerplate
 
 Code ran without errors
 
-Time consumed = 0.01309s
+Time consumed = 0.03783s
 
 ======================================================================
 Inspecting script file basic_csv.py...
@@ -275,12 +281,14 @@ Inspecting script file basic_csv.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Reads and prints a csv file, then writes specific components of the read csv
+"""Reads and prints a csv file, then writes specified components of the csv
 to a new csv."""
-
-__author__ = "Katie Bickerton (k.bickerton18@imperial.ac.uk)"
+__appname__ = "basic_csv.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
 __version__ = "3.5.2"
+__date__ = "09-Oct-2018"
 
+# module dealing with csv files
 import csv
 
 # Read a file containing:
@@ -305,15 +313,15 @@ f.close()
 # opens testcsv.csv as a file to be read and set to variable f
 f = open('../Data/testcsv.csv','r')
 # opens bodymass.csv as a file to be written and set to variable g
-g = open('../Data/bodymass.csv', 'w')
+g = open('../Results/bodymass.csv', 'w')
 
-
+# set variables to each csv
 csvread = csv.reader(f)
 csvwrite = csv.writer(g)
 for row in csvread:
     # print each row in read csv
     print(row)
-    # write the 0 and 4 entries from each row (indexing starts at 0) into the write csv
+    # write the 1st and 5th entries from each row (indexing starts at 0) into the write csv
     csvwrite.writerow([row[0], row[4]])
 
 # close both files
@@ -331,19 +339,19 @@ Output (only first 500 characters):
 
 **********************************************************************
 ['Species', 'Infraorder', 'Family', 'Distribution', 'Body mass male (Kg)']
-('The species is', 'Species')
+The species is Species
 ['Daubentonia_madagascariensis', 'Chiromyiformes ', 'Daubentoniidae', 'Madagascar', '2.7']
-('The species is', 'Daubentonia_madagascariensis')
+The species is Daubentonia_madagascariensis
 ['Allocebus_trichotis', 'Lemuriformes', 'Cheirogaleidae', 'Madagascar', '0.1']
-('The species is', 'Allocebus_trichotis')
+The species is Allocebus_trichotis
 ['Avahi_laniger', 'Lemuriformes', 'Indridae', 'America', '1.03']
-('The species is', 'Avahi_laniger')
-['Avahi_occidentalis', 'Lemurifo
+The species is Avahi_laniger
+['Avahi_occidentalis', 'Lemuriformes', 'Indridae', 'Madagasc
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.01505s
+Time consumed = 0.03418s
 
 ======================================================================
 Inspecting script file cfexercises2.py...
@@ -351,24 +359,29 @@ Inspecting script file cfexercises2.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Demonstrates definition of functions using if statements and for loops."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+"""Demonstrates definition of functions using if statements and for loops,
+includes test values."""
+__appname__ = "cfexercises2.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 # module interfacing this program with the operating system
 import sys
 
+# defining a function which squareroots a variable
 def foo1(x):
     """foo1 square roots variable x.""" 
     return x ** 0.5
 
+# defining a function which compares the size of two variables
 def foo2(x, y):
     """foo2 compares and outputs the larger two variables"""
     if x > y:
         return x
     return y
 
+# rearranges order of three variables using if statements
 def foo3(x, y, z):
     """foo3 compares three input variables, alters positions based upon relative values, 
     and returns new arangement of variables"""
@@ -382,6 +395,7 @@ def foo3(x, y, z):
         y = tmp
     return [x, y, z]
 
+# calculates the factorial of x using a for loop
 def foo4(x):
     """foo4 gives factorial of x."""
     result = 1
@@ -389,12 +403,14 @@ def foo4(x):
         result = result * i
     return result
 
+# gives factorial
 def foo5(x): #where x = 10, the function will give 10!
     """foo5 returns factorial of input value using a recursive function"""
     if x == 1:
         return 1
     return x * foo5(x - 1)
 
+# non recursive factorial using while statements
 def foo6(x):
     """foo6 also returns factorial of variable, using a non-recursive function."""
     facto = 1
@@ -403,6 +419,7 @@ def foo6(x):
         x = x - 1
     return facto
 
+# test values for the functions defined 
 def main(argv):
     """Tests functions."""
     print(foo1(16))
@@ -439,7 +456,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.01629s
+Time consumed = 0.03492s
 
 ======================================================================
 Inspecting script file dictionary.py...
@@ -447,11 +464,12 @@ Inspecting script file dictionary.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Populated a dictionary with order as the key, and each species sorted
+"""Populate a dictionary with order as the key, and each species sorted
 into order."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+__appname__ = "dictionary.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 taxa = [ ('Myotis lucifugus','Chiroptera'),
          ('Gerbillus henleyi','Rodentia',),
@@ -490,13 +508,13 @@ Found one or more doctrings!
 Output (only first 500 characters): 
 
 **********************************************************************
-{'Rodentia': set(['Peromyscus crinitus', 'Mus domesticus', 'Gerbillus henleyi', 'Cleithrionomys rutilus']), 'Afrosoricida': set(['Microgale dobsoni', 'Microgale talazaci']), 'Chiroptera': set(['Myotis lucifugus']), 'Carnivora': set(['Arctocephalus gazella', 'Lyacon pictus', 'Canis lupus'])}
+{'Chiroptera': {'Myotis lucifugus'}, 'Afrosoricida': {'Microgale talazaci', 'Microgale dobsoni'}, 'Carnivora': {'Lyacon pictus', 'Arctocephalus gazella', 'Canis lupus'}, 'Rodentia': {'Mus domesticus', 'Cleithrionomys rutilus', 'Gerbillus henleyi', 'Peromyscus crinitus'}}
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.01491s
+Time consumed = 0.02526s
 
 ======================================================================
 Inspecting script file debugme.py...
@@ -504,17 +522,21 @@ Inspecting script file debugme.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Code to practise debugging."""
+"""Code with error to practise debugging."""
+__appname__ = "debugme.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "13-Oct-2018"
 
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
 
 def createabug(x):
+    """Simple division - with bug, to test debugging."""
     y = x**4
     z = 0
     y = y/z
     return y
 
+# run function
 createabug(25)**********************************************************************
 
 Testing debugme.py...
@@ -532,11 +554,11 @@ Output (only first 500 characters):
 
 Encountered error:
 Traceback (most recent call last):
-  File "debugme.py", line 13, in <module>
+  File "debugme.py", line 17, in <module>
     createabug(25)
-  File "debugme.py", line 10, in createabug
+  File "debugme.py", line 13, in createabug
     y = y/z
-ZeroDivisionError: integer division or modulo by zero
+ZeroDivisionError: division by zero
 
 ======================================================================
 Inspecting script file scope.py...
@@ -546,6 +568,10 @@ File contents are:
 #!/usr/bin/env python3
 """Demonstrates that global variables appear outside the function, whereas
 variables set inside the function do not alter variables outside the function."""
+__appname__ = "scope.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "10-Oct-2018"
 
 # Part 1
 # set value of variables
@@ -594,18 +620,18 @@ Found one or more doctrings!
 Output (only first 500 characters): 
 
 **********************************************************************
-('Inside the function, the value is ', 5)
-('Inside the function, the value is ', 4)
-('Outside the function, the value is ', 10)
-('Inside the function, the value is ', 5)
-('Inside the function, the value is ', 4)
-('Outside the function, the value is', 5)
+Inside the function, the value is  5
+Inside the function, the value is  4
+Outside the function, the value is  10
+Inside the function, the value is  5
+Inside the function, the value is  4
+Outside the function, the value is 5
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.01648s
+Time consumed = 0.02636s
 
 ======================================================================
 Inspecting script file cfexercises1.py...
@@ -614,6 +640,10 @@ File contents are:
 **********************************************************************
 #!/usr/bin/env python3
 """Demonstration of different control functions."""
+__appname__ = "cfexercises1.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 for i in range(3, 17): #prints hello for every i in range
     print("hello")
@@ -693,7 +723,7 @@ hello
 
 Code ran without errors
 
-Time consumed = 0.01323s
+Time consumed = 0.03168s
 
 ======================================================================
 Inspecting script file tuple.py...
@@ -702,9 +732,10 @@ File contents are:
 **********************************************************************
 #!/usr/bin/env python3
 """Print each tuple on a separate line."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+__appname__ = "tuple.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
@@ -743,7 +774,7 @@ Tachycineata bicolor,Tree swallow,20.2
 
 Code ran without errors
 
-Time consumed = 0.01526s
+Time consumed = 0.03066s
 
 ======================================================================
 Inspecting script file basic_io.py...
@@ -754,11 +785,11 @@ File contents are:
 """Demonstrates inputing text files into python: 
 File Input prints first every line in a file, then every line apart from blank lines,
 File Output generates a list of a specified range, then saves it with each element on a new line,
-Storing Files using the pickle module"""
-
-__author__ = "Katie Bickerton (k.bickerton18@imperial.ac.uk)"
+Storing Files using the pickle module."""
+__appname__ = "basic_io.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
 __version__ = "3.5.2"
-
+__date__ = "09-Oct-2018"
 
 ##############
 # FILE INPUT
@@ -857,7 +888,7 @@ Fourth Line
 
 Code ran without errors
 
-Time consumed = 0.01672s
+Time consumed = 0.03231s
 
 ======================================================================
 Inspecting script file lc1.py...
@@ -865,11 +896,12 @@ Inspecting script file lc1.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Demonstrates definition of functions using if statements and for loops, for
-bird data in script."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+"""Exemplifies use of list comprehensions and conventional loops to subset
+information from a list."""
+__appname__ = "lc1.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
@@ -936,18 +968,18 @@ Found one or more doctrings!
 Output (only first 500 characters): 
 
 **********************************************************************
-set(['Junco hyemalis', 'Passerculus sandwichensis', 'Junco phaeonotus', 'Tachycineata bicolor', 'Delichon urbica'])
-set(['Savannah sparrow', 'House martin', 'Dark-eyed junco', 'Yellow-eyed junco', 'Tree swallow'])
-set([19.5, 20.2, 19, 18.7, 19.6])
-set(['Junco hyemalis', 'Passerculus sandwichensis', 'Junco phaeonotus', 'Tachycineata bicolor', 'Delichon urbica'])
-set(['Savannah sparrow', 'House martin', 'Dark-eyed junco', 'Yellow-eyed junco', 'Tree swallow'])
-set([19.5, 20.2, 19, 18.7, 19.6])
+{'Delichon urbica', 'Tachycineata bicolor', 'Junco phaeonotus', 'Junco hyemalis', 'Passerculus sandwichensis'}
+{'House martin', 'Dark-eyed junco', 'Savannah sparrow', 'Tree swallow', 'Yellow-eyed junco'}
+{19.5, 19.6, 18.7, 19, 20.2}
+{'Delichon urbica', 'Tachycineata bicolor', 'Junco phaeonotus', 'Junco hyemalis', 'Passerculus sandwichensis'}
+{'House martin', 'Dark-eyed junco', 'Savannah sparrow', 'Tree swallow', 'Yellow-eyed junco'}
+{19.5, 19.6, 18.7, 19, 20.2}
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.01234s
+Time consumed = 0.02716s
 
 ======================================================================
 Inspecting script file oaks_debugme.py...
@@ -957,10 +989,12 @@ File contents are:
 #!/usr/bin/env python3
 """Finds oak species from a csv file and output these into a new csv file of oak
 species only."""
+__appname__ = "oaks_debugme.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "14-Oct-2018"
 
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
-
+# required modules
 import csv
 import sys
 import doctest
@@ -1060,7 +1094,7 @@ FOUND AN OAK!
 
 Code ran without errors
 
-Time consumed = 0.05480s
+Time consumed = 0.06650s
 
 ======================================================================
 Inspecting script file oaks.py...
@@ -1071,6 +1105,11 @@ File contents are:
 """Demonstrates how list for loops and list comprehensions can be used for
 the same tasks - outputing oak species from list and changing output to upper
 case."""
+__appname__ = "oaks.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
+
 
 taxa = ["Quercus robur",
         "Fraxinus excelsior",
@@ -1080,14 +1119,16 @@ taxa = ["Quercus robur",
         ]
 
 def is_an_oak(name):
-    #function defining what an oak is
+    """Searches for oak genus and returns in lower case."""
     return name.lower().startswith("quercus ")
 
 ###Two methods for ouputing oak species in list:
 ##Using for loops
-oaks_loops = set() 
+oaks_loops = set()
+# for all species in data 
 for species in taxa:
     if is_an_oak(species):
+            # add oaks to set
         oaks_loops.add(species)
 print(oaks_loops)
 
@@ -1118,16 +1159,16 @@ Found one or more doctrings!
 Output (only first 500 characters): 
 
 **********************************************************************
-set(['Quercus robur', 'Quercus cerris', 'Quercus petraea'])
-set(['Quercus robur', 'Quercus cerris', 'Quercus petraea'])
-set(['QUERCUS ROBUR', 'QUERCUS CERRIS', 'QUERCUS PETRAEA'])
-set(['QUERCUS ROBUR', 'QUERCUS CERRIS', 'QUERCUS PETRAEA'])
+{'Quercus petraea', 'Quercus robur', 'Quercus cerris'}
+{'Quercus petraea', 'Quercus robur', 'Quercus cerris'}
+{'QUERCUS CERRIS', 'QUERCUS PETRAEA', 'QUERCUS ROBUR'}
+{'QUERCUS CERRIS', 'QUERCUS PETRAEA', 'QUERCUS ROBUR'}
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.01447s
+Time consumed = 0.03280s
 
 ======================================================================
 Inspecting script file loops.py...
@@ -1136,6 +1177,10 @@ File contents are:
 **********************************************************************
 #!/usr/bin/env python3
 """Demonstration of for loops and while loops."""
+__appname__ = "loops.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 #FOR loops in Python
 # Prints values of i up to range specified 
@@ -1164,8 +1209,7 @@ while z < 100:
 # Infinite loop that prints until b is FALSE
 b = True
 while b:
-    print("GERONIMO! Infinite loop! ctrl+c to stop!")
-    **********************************************************************
+    print("GERONIMO! Infinite loop! ctrl+c to stop!")**********************************************************************
 
 Testing loops.py...
 
@@ -1301,7 +1345,7 @@ GERONIMO! Infinite loop! ctrl+c
 
 Code ran without errors
 
-Time consumed = 10.59728s
+Time consumed = 10.25812s
 
 ======================================================================
 Inspecting script file using_name.py...
@@ -1311,12 +1355,13 @@ File contents are:
 #!/usr/bin/env python3
 """Demonstration of using __name__==__"main"__ to write a program that can
 run itself, and be imported by another module."""
-
-__author__="Katie Bickerton (k.bickerton18@imperial.ac.uk)"
-__version__="3.5.2"
-
+__appname__ = "using_name.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "10-Oct-2018"
 
 if __name__ == '__main__':
+    """Checks if the programe is being run by itself or imported."""
     print('This program is being run by itself')
     # if run, will output that the program runs itself
 else:
@@ -1339,7 +1384,7 @@ This program is being run by itself
 
 Code ran without errors
 
-Time consumed = 0.07536s
+Time consumed = 0.07390s
 
 ======================================================================
 Inspecting script file align_seqs.py...
@@ -1349,9 +1394,10 @@ File contents are:
 #!/usr/bin/env python3
 """Ouput the two DNA sequences with the highest number of matches, with their
 number of matches, from a csv."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
+__appname__ = "align_seqs.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "14-Oct-2018"
 
 import sys
 #import csv module to allow csv files to be read/written
@@ -1390,6 +1436,7 @@ else:
 # A function that computes a score by returning the number of matches starting
 # from arbitrary startpoint (chosen by user)
 def calculate_score(s1, s2, l1, l2, startpoint):
+    """Computes number of matches and returns score based on matches."""
     matched = "" # to hold string displaying alignements
     score = 0
     for i in range(l2):
@@ -1500,7 +1547,7 @@ ATCGCCGG
 
 Code ran without errors
 
-Time consumed = 0.05894s
+Time consumed = 0.05126s
 
 ======================================================================
 Inspecting script file sysargv.py...
@@ -1508,10 +1555,12 @@ Inspecting script file sysargv.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Using module sys, gives name, number of arguments and lists arguments of a script."""
-
-__author__="Katie Bickerton (k.bickerton18@imperial.ac.uk)"
-__version__="3.5.2"
+"""Using module sys, gives name, number of arguments and lists arguments 
+of a script."""
+__appname__ = "sysargv.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "10-Oct-2018"
 
 # import module sys
 import sys
@@ -1533,15 +1582,15 @@ Found one or more doctrings!
 Output (only first 500 characters): 
 
 **********************************************************************
-('This is the name of the script: ', 'sysargv.py')
-('Number of arguments: ', 1)
-('The arguments are: ', "['sysargv.py']")
+This is the name of the script:  sysargv.py
+Number of arguments:  1
+The arguments are:  ['sysargv.py']
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.01705s
+Time consumed = 0.02461s
 
 ======================================================================
 Inspecting script file control_flow.py...
@@ -1550,10 +1599,10 @@ File contents are:
 **********************************************************************
 #!/usr/bin/env python3
 """Demonstrating the use of control statements."""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
-
+__appname__ = "control_flow.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "11-Oct-2018"
 
 import sys
 
@@ -1656,7 +1705,7 @@ True
 
 Code ran without errors
 
-Time consumed = 0.01712s
+Time consumed = 0.02687s
 
 ======================================================================
 Inspecting script file test_control_flow.py...
@@ -1664,11 +1713,11 @@ Inspecting script file test_control_flow.py...
 File contents are:
 **********************************************************************
 #!/usr/bin/env python3
-"""Some function exemplifying the use of control statements"""
-
-__author__ = 'Katie Bickerton (k.bickerton18@imperial.ac.uk'
-__version__ = '3.5.2'
-
+"""Functions exemplifying the use of control statements."""
+__appname__ = "test_control_flow.py"
+__author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
+__version__ = "3.5.2"
+__date__ = "12-Oct-2018"
 
 import sys
 #module for testing functions
@@ -1766,7 +1815,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.03946s
+Time consumed = 0.06708s
 
 ======================================================================
 ======================================================================
@@ -1779,6 +1828,6 @@ Ran into 1 errors
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 95.5
+Current Points for the Week = 100
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

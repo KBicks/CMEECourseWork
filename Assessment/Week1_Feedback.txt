@@ -9,13 +9,13 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 1.59 MiB on disk 
+Your Git repo size this week is about 4.24 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week1, Assessment, Week2, .git
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week5, Week2, Week9, Week4, .git, Miniproject, Week3, Project
 
-Found the following files in parent directory: README.txt, .gitignore
+Found the following files in parent directory: .gitignore, readme.md
 
 Checking for key files in parent directory...
 
@@ -25,19 +25,35 @@ Printing contents of .gitignore:
 **********************************************************************
 *~ 
 *.tmp
+*.pcy
+__pycache__
+*.Rhistory
+*.gz
+*.aux
+*.log
+*.blg
+*.bbl
 **********************************************************************
 
-Found README in parent directory, named: README.txt
+Found README in parent directory, named: readme.md
 
-Printing contents of README.txt:
+Printing contents of readme.md:
 **********************************************************************
-My CMEE Coursework Repository
-**********************************************************************
+### CMEE Coursework Repository 2018/19 README
+  
+*Author:* Katie Bickerton
+  
+*Contents:*  
+**Week{1-9}** - exercises from the taught content of the course.  
+**Miniproject** - script and data files for the CMEE mini-project, (this is also the week 8 directory).  
+**Project** - script and data files for the 9 month research project.  
+**Assessment** - feedback on the taught content from the assessor.  
+**.gitignore** - file types within the home directory but not kept under version control.  **********************************************************************
 
 ======================================================================
 Looking for the weekly directories...
 
-Found 2 weekly directories: Week1, Week2
+Found 8 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week9
 
 The Week1 directory will be assessed 
 
@@ -50,46 +66,51 @@ Assessing WEEK1...
 
 Found the following directories: Code, Data, Sandbox, Results
 
-Found the following files: readme-week1.txt
+Found the following files: readme.md
 
 Checking for readme file in weekly directory...
 
-Found README in parent directory, named: readme-week1.txt
+Found README in parent directory, named: readme.md
 
-Printing contents of readme-week1.txt:
+Printing contents of readme.md:
 **********************************************************************
-CMEE Course Work Week 1 Directory
+### CMEE Coursework Week 1 README
 
-This directory contains four directories:
-    1. Code
-    2. Data
-    3. Results
-    4. Sandbox
+*Introduction:* This directory contains coursework files from week 1 of the CMEE course. This week included an introduction to Unix, shell scripting in bash, introduction to github, and compiling pdf files using LaTeX.
+  
+    
+*Contents:* There are four directories:
+1. **Code** - script files in bash and LaTeX.
+2. **Data** - data used to test script files and referred to within some scripts.
+3. **Results** - location for output files produced by script files.
+4. **Sandbox** - practise and test files.
+  
+  
+*Code File Descriptions:*
 
-The Code contains unix code and shell scripts as described:
-    *.sh files contain shell scripts in unix.
-    boilerplate.sh is a basic test script.
-    CompileLaTeX.sh produces a pdf file .pdf from a latex source file .tex and 
-    inserts citations and bibliography from a .bib file.
-    ConcatenateTwoFiles.sh merges two files.
-    CountLines.sh counts the number of lines in a file.
-    csvtospace.sh converts csv files to space delimited.
-    tabtocsv.sh converts tab delimited files to csv files.
-    tiff2png.sh converts .tif files and .png files.
-    MyExampleScript.sh and variables.sh both demonstrate use of variables.
-    UnixPrac1.txt contains solutions to unix practical tasks.
+Unix Practical:  
+**UnixPrac1.txt** - solutions to unix practical tasks.  
 
-The Data directory contains files for testing the code scripts.
-The Results directory contains the outputs from code scripts.
-The Sandbox directory contains the practise and test files.**********************************************************************
+Shell Scripting:  
+**boilerplate.sh** - A simple boilerplate exemplifying shell scripting.  
+**tabtocsv.sh** - Converts a tab delimited file to a comma delimited file (.csv) via substitution of tabs for commas, file required in the command line.  
+**variables.sh** - Exemplifies setting variables within the script and from the terminal.  
+**MyExampleScript.sh** - Exemplifies setting variables and returning within a string.  
+**CountLines.sh** - Counts lines in input file, file required from the command line.  
+**ConcatenateTwoFiles.sh** Merge two files input from the terminal, with resulting file name specified in the command line.  
+**tiff2png.sh** - Converts tiff files to png files, using a for loop and imagemagick, .tif file required from command line.  
+Shell Scripting Practical:  
+**csvtospace.sh** - Convert comma to space delimited files, via substitution of commas for spaces, .csv file specified in the command line.  
 
-Found following files in results directory: ...
-Found 13 code files: ConcatenateTwoFiles.sh, .txt, CountLines.sh, variables.sh, CompileLaTeX.sh, tiff2png.sh, csvtospace.sh, FirstExample.tex, MyExampleScript.sh, FirstBiblio.bib, UnixPrac1.txt, tabtocsv.sh, boilerplate.sh
+LaTeX:  
+**FirstExample.tex** - example LaTeX file for compiling a pdf.  
+**FirstBiblio.bib** - example bibliography file.  
+LaTeX Practical:  
+**CompileLaTeX.sh** - Compiles a pdf document (with bibliography) from a .tex file, file name (without file extension) required from the command line.  **********************************************************************
 
-Found the following extra files: FirstExample.log, FirstExample.aux, FirstExample.pdf
-0.5 pt deducted per extra file
+Found following files in results directory: readme.md...
 
-Current Points = 98.5
+Found 12 code files: ConcatenateTwoFiles.sh, CountLines.sh, variables.sh, CompileLaTeX.sh, tiff2png.sh, csvtospace.sh, FirstExample.tex, MyExampleScript.sh, FirstBiblio.bib, UnixPrac1.txt, tabtocsv.sh, boilerplate.sh
 
 ======================================================================
 Testing script/code files...
@@ -102,13 +123,19 @@ File contents are:
 #!/bin/bash
 # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: ConcatenateTwoFiles.sh
-# Desc: Merge two files
-# Arguments: 1,2-> files to be merged, 3-> output file
+# Desc: Merge two files input from the terminal, with resulting file name
+# specified in the command line.
+# Arguments: 1,2-> files to be merged, 3-> output file, all specified in the 
+# command line.
 # Date: 07 Oct 2018
 
+# copies contents of file 1 onto new file 3 using >
 cat $1 > $3
+# appends file 3 with contents of file 2, using >> 
+# which prevents overwritting other content 
 cat $2 >> $3
 echo "Merged File is"
+# returns contents of merged file
 cat $3
 
 exit**********************************************************************
@@ -123,17 +150,8 @@ Merged File is
 **********************************************************************
 
 Encountered error:
-ConcatenateTwoFiles.sh: line 8: $3: ambiguous redirect
-ConcatenateTwoFiles.sh: line 9: $3: ambiguous redirect
-
-======================================================================
-Inspecting script file .txt...
-
-File contents are:
-**********************************************************************
-**********************************************************************
-
-Testing .txt...
+ConcatenateTwoFiles.sh: line 11: $3: ambiguous redirect
+ConcatenateTwoFiles.sh: line 14: $3: ambiguous redirect
 
 ======================================================================
 Inspecting script file CountLines.sh...
@@ -143,11 +161,13 @@ File contents are:
 #!/bin/bash
 # Author: Katie Bickerton k.bickerton@imperial.ac.uk
 # Script: CountLines.sh
-# Desc: Counts lines in a file
-# Arguments: NumLines -> Number of lines, 1-> file
+# Desc: Counts lines in input file, file required from the command line.
+# Arguments: NumLines -> Integer (line count value), 1-> file (from terminal)
 # Date: 07 Oct 2018
 
+# counts lines within file input from the command line
 NumLines=`wc -l < $1`
+# returns the result of the count, set to argument "Numlines"
 echo "The file $1 has $NumLines lines"
 echo
 
@@ -164,7 +184,7 @@ The file  has  lines
 **********************************************************************
 
 Encountered error:
-CountLines.sh: line 8: $1: ambiguous redirect
+CountLines.sh: line 9: $1: ambiguous redirect
 
 ======================================================================
 Inspecting script file variables.sh...
@@ -172,26 +192,33 @@ Inspecting script file variables.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
-# # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: variables.sh
-# Desc: demonstrating the use of single and multiple variables
-# Arguments: MyVar -> string, a,b,mysum-> numerical values
+# Desc: Exemplifies setting variables within the script and from the terminal.
+# Arguments: MyVar -> alphanumeric string, a,b,mysum-> numerical
 # Date: 07 Oct 2018
 
-#Shows the use of setting variables
+# Shows use of variables
+# Set intial value of variable
 MyVar='some string'
+# returns value of variable
 echo 'the current value of the variable is' $MyVar
 echo 'please enter a new string'
+# requests user to enter a value
 read MyVar
+# can be used to indicate whether variable has been accepted
 echo 'the current value of the variable is' $MyVar
 
-## Reading multiple values
+# Reading multiple values
 echo 'Enter two numbers separated by space(s)'
+# asks for input of 2 values
 read a b 
 echo 'you entered' $a 'and' $b '. Their sum is:'
+# adds the two entered numbers and sets them to the variable mysum
 mysum= expr $a + $b
 echo $mysum
 
+# exits script
 exit**********************************************************************
 
 Testing variables.sh...
@@ -217,7 +244,13 @@ Inspecting script file CompileLaTeX.sh...
 File contents are:
 **********************************************************************
 #!/bin/bash
-# Compiles pdf from .tex files and bibliography from .bib files
+# Author: Katie Bickerton k.bickerton18@imperial.ac.uk
+# Script: CompileLaTeX.sh
+# Desc: Compiles a pdf document (with bibliography) from a .tex file.
+# Arguments: 1-> .tex file 
+# Date: 08 Oct 2018
+
+# Compiles pdf from .tex files and bibliography
 
 pdflatex $1.tex
 pdflatex $1.tex
@@ -227,7 +260,7 @@ pdflatex $1.tex
 # Opens pdf viewer
 evince $1.pdf &
 
-##Cleanup
+## Cleanup
 # Removes extra files generated during compilation
 rm *~
 rm *.aux
@@ -265,7 +298,9 @@ Encountered error:
 bibtex: Need exactly one file argument.
 Try `bibtex --help' for more information.
 rm: cannot remove '*~': No such file or directory
+rm: cannot remove '*.aux': No such file or directory
 rm: cannot remove '*.dvi': No such file or directory
+rm: cannot remove '*.log': No such file or directory
 rm: cannot remove '*.nav': No such file or directory
 rm: cannot remove '*.out': No such file or directory
 rm: cannot remove '*.snm': No such file or directory
@@ -273,29 +308,29 @@ rm: cannot remove '*.toc': No such file or directory
 rm: cannot remove '*.blg': No such file or directory
 rm: cannot remove '*.bbl': No such file or directory
 
-** (evince:26704): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2018-19/Coursework/StudentRepos/KatherineBickerton_KB2018/Week1/Code/.pdf': No such file or directory
+** (evince:11360): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2018-19/Coursework/StudentRepos/KatherineBickerton_KB2018/Week1/Code/.pdf': No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:26704): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11360): WARNING **: Error setting file metadata: No such file or directory
 
 ======================================================================
 Inspecting script file tiff2png.sh...
@@ -305,11 +340,11 @@ File contents are:
 #!/bin/bash
 # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: tiff2png.sh
-# Desc: convert tiff files to png files
-# Arguments: f-> .tiff
+# Desc: Converts tiff files to png files, using a for loop and imagemagick.
+# Arguments: f-> .tiff file from command line
 # Date: 07 Oct 2018
 
-# for loop which converts tiff files to png files
+# for loop which converts each tiff file found to png files
 for f in *.tif;
     do
         echo "Converting $f";
@@ -339,12 +374,13 @@ File contents are:
 #!/bin/bash
 # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: csvtospace.sh
-# Desc: change csv to space delimited files, via substitution of commas for spaces
+# Desc: Convert comma to space delimited files, via substitution of 
+# commas for spaces, file taken from command line.
 # Arguments: 1-> comma delimited file 
 # Date: 08 Oct 2018
 
 echo "Creating a space delimited version of $1"
-# replaces commas with spaces
+# replaces commas with spaces for input file
 cat $1 | tr -s "," " " >> $1.txt
 echo "Done!"
 exit**********************************************************************
@@ -361,7 +397,7 @@ Done!
 
 Code ran without errors
 
-Time consumed = 0.00738s
+Time consumed = 0.00626s
 
 ======================================================================
 Inspecting script file FirstExample.tex...
@@ -392,8 +428,7 @@ File contents are:
 
     \bibliographystyle{plain}
     \bibliography{FirstBiblio}
-\end{document}
-**********************************************************************
+\end{document}**********************************************************************
 
 Testing FirstExample.tex...
 
@@ -405,16 +440,19 @@ File contents are:
 #!/bin/bash
 # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: MyExampleScript.sh
-# Desc: prints two part message saying hello to user
+# Desc: Exemplifies setting variables and returning within a string.
 # Arguments: msg1,msg2 -> alphanumeric string
 # Date: 07 Oct 2018
 
 # set values of variables
 msg1='Hello'
+# $USER prints signifies name of user running script
 msg2=$USER
-# print variables 
+# print variables, showing how same results can be produced by settingg
+# variables and inputting directly into a string.
 echo "$msg1 $msg2"
 echo "Hello $USER"
+# just command echo adds a blank line
 echo
 
 exit**********************************************************************
@@ -432,7 +470,7 @@ Hello mhasoba
 
 Code ran without errors
 
-Time consumed = 0.00705s
+Time consumed = 0.00555s
 
 ======================================================================
 Inspecting script file FirstBiblio.bib...
@@ -486,13 +524,15 @@ File contents are:
 #!/bin/bash
 # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: tabtocsv.sh
-# Desc: substitute the tabs in the files with commas, saves the output into a .csv file
-# Arguments: 1-> tab delimited file
+# Desc: Converts a tab delimited file to a comma delimited file (.csv) via substitution of tabs for commas.
+# Arguments: 1 -> tab delimited file
 # Date: 02 Oct 2018
 
 echo "Creating a comma delimited version of $1 ..."
-# Replace tabs with commas
+# cat to create new file, >> saves it to new file with name ending .csv
+# tr replaces tabs in input file with commas
 cat $1 | tr -s "\t" "," >> $1.csv
+# states when completed
 echo "Done!"
 exit**********************************************************************
 
@@ -508,17 +548,17 @@ Done!
 
 Code ran without errors
 
-Time consumed = 0.00933s
+Time consumed = 0.00771s
 
 ======================================================================
 Inspecting script file boilerplate.sh...
 
 File contents are:
 **********************************************************************
-#!/bin/bash - tells interpreter this is a bash script
+#!/bin/bash 
 # Author: Katie Bickerton k.bickerton18@imperial.ac.uk
 # Script: boilerplate.sh
-# Desc: simple boilerplate for shell scripts
+# Desc: A simple boilerplate exemplifying shell scripting.
 # Arguments: none
 # Date: 02 Oct 2018
 
@@ -540,7 +580,7 @@ This is a shell script!
 
 Code ran without errors
 
-Time consumed = 0.00979s
+Time consumed = 0.00395s
 
 ======================================================================
 ======================================================================
@@ -553,6 +593,6 @@ Ran into 5 errors
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 98.5
+Current Points for the Week = 100
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
