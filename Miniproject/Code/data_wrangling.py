@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Manipulated large dataset (see report for source) to extract variables
+"""Manipulates pred_prey dataset (see report for source) to extract variables
 needed for model building and fitting in R."""
 __appname__ = "data_wrangling.py"
 __author__ = "Katie Bickerton <k.bickerton18@imperial.ac.uk>"
@@ -15,7 +15,7 @@ import statistics
 from statistics import mean
 
 # read raw data
-data = pd.read_csv("pred_prey.csv")
+data = pd.read_csv("../Data/pred_prey.csv", low_memory=False)
 # remove spaces in column headers
 data.columns = [x.replace(" ","_") for x in data.columns]
 
@@ -60,6 +60,12 @@ for x in pp.Predator:
     prec_mean[x] = mean(pp.Mean_PP[pp.Predator == x])
 
 
+# standardize habitats and split into either coastal or pelagic
+habitat = habitat.replace(["Off_the_continental_shelf","open_ocean","Pelagic"],
+"pelagic", regex=True)
+habitat = habitat.replace(["Coastal_Bay","inshore","nearshore","Nearshore_waters", "offshelf_and_on_shelf", 
+"shelf","Shelf","transition_region"],"coastal",regex=True)
+
 # combines series generated above into a single dataframe by the predator name
 averaged = pd.concat([predator,pred_meanmass,pred_meanlength,prey_meanmass,prey_meanlength,
 feeding_interaction,habitat,depth_mean,temp_mean,prec_mean],axis=1, ignore_index=True)
@@ -69,4 +75,4 @@ averaged.columns = ['pred_species','pred_meanmass','pred_meanlength','prey_meanm
 'habitat','depth_mean','temp_mean','prec_mean']
 
 # save dataframe to csv for use in R
-averaged.to_csv('../Data/predprey.csv',sep=',', index=False)
+averaged.to_csv('../Data/pred_prey_wrangled.csv',sep=',', index=False)
