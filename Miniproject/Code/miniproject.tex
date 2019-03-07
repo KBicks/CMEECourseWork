@@ -5,40 +5,113 @@
 \documentclass[11pt,a4paper,titlepage]{article}
 
 \title{CMEE Miniproject \\ Title}
-\date{05 March 2019}
+\date{05 March 2019 \\Word Count =}
 \author{Katherine Bickerton, Imperial College London}
+
 
 \usepackage{float}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{pgfplotstable}
 \usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{titlesec}
 \usepackage{lineno}
-\linespread{2}
-
+%\linespread{2}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
 
 
 \begin{document}
 	
-	\maketitle
+	\begin{titlepage}
+		\centering
+		\topskip0pt
+		\vspace*{\fill}
+				
+		{\bfseries\Large
+			\vskip4cm
+			CMEE MiniProject:\\
+			Title
+		}    
+		\vskip2cm	
+%		\includegraphics[width=6cm]{logo.jpg}
+		\vskip2cm	
+		Katherine Bickerton, \textit{Imperial College, London}\\
+		\vskip1cm		
+		Word Count = []
+		\vspace*{\fill}
+		\vspace*{\fill}
+		\vspace*{\fill}
+	\end{titlepage}
 	
-	\newpage
+	
+	\Large \noindent Miniproject
 	\linenumbers
 	
+	\normalsize	
 	\section{Abstract}
+	
+	Main point from each section
 	
 	\section{Introduction}
 	
+	Background + problem\\
+	\\
+	This study aims to investigate the relationship between predator mass and average prey mass, on a global scale, across a range of habitats, temperatures and depths. As opposed to defining a typical "null hypothesis", this study is considering several different models for predator mass, based on the above factors, and will select and interpret the optimal model for the system.
+	
+	
 	\section{Methods}
 	
+	Info about the data - where it came from etc\\
+	
+	\subsection{Data Manipulation and Models}
+	
+	
+	As the response variable must be consistent to make the models comparable during selection, predator mass was log transformed in all models, as were prey mass and depth as the transforms improved model fit.\\
+	\\
+	When building the models, I started with the assumption that predator mass would be a function of the average mass of prey species. Additional explanatory variables were also considered and selected for in each model, dependent on whether they improved model fit, described below. The additional variables considered were prey length, feeding interaction (predacious, piscivrous or planktivourous), habitat (pelagic or coastal), depth and temperature. The mean average was calculated for all continuous variables and the mode for categorical variables, for each of the 57 predator species.\\
+	\\
+	FOR EACH: JUSTIFY STEPS AND SHOW WHY APPROPRIATE
+	\textbf{Linear Regression Model}: \\
+	\\
+	\textbf{Generalised Additive Model (GAM)}: \\
+	\\
+	\textbf{Linear Mixed Effects Model}: \\
+	\\
+
 	\subsection{Computing Languages}
+	
+	How each language was used and why
 	
 	\section{Results}
 	
+	Quote sig results in text\\
+	refer to figures in text\\
+	\subsection{Model 1: Linear Regression Model}
+	\subsection{Model 2: Generalised Additive Model}
+	\subsection{Model 3: Linear Mixed Effects Model}
+	\subsection{Model Selection and Implications}
+	
 	\section{Discussion}
+	
+	Explain each model's implications and potential caveats\\
+	
+	Talk about model selection and why\\
+		
+	Further and broader context, implications in the field/importance\\
+	
+	Caveats:\\
+	The most significant assumption in all the models is that prey density is constant. Density is a particularly difficult measure in marine systems, especially open ocean due to depth and highly pelagic species, therefore was not available for the dataset, especially given the global nature of the data.\\
+	
+	Areas of future study\\
 	
 	\subsection{Conclusion}	
 	
-	\section{References}
+	Main findings\\
+	Main implications\\
 	
+	
+	\bibliography{miniproject.bib}
+	\bibliographystyle{plainnat}
 	
 \end{document}
