@@ -40,7 +40,7 @@
 		\vskip2cm	
 		Katherine Bickerton, \textit{Imperial College, London}\\
 		\vskip1cm		
-		Word Count = [2591]
+		Word Count = [2597]
 		\vspace*{\fill}
 		\vspace*{\fill}
 	\end{titlepage}
@@ -52,13 +52,13 @@
 	\normalsize	
 	\section{Abstract}
 	
-	\par \noindent Marine systems are one of the most difficult to monitor on the planet and one of the most at risk. Those at higher trophic levels are often the most at risk due to dependence on the stability of the rest of the food web. In this study, I aim to build several different types of model for predicting predator size, based upon prey size, feeding interaction, habitat, temperature and depth. The optimal model found was a generalised additive model (GAM), with prey mass, temperature and depth as explanatory variables. Feeding interaction was also found to have an effect, but violated the assumptions of GAM, therefore could not be included in the optimal model. These findings implies that predator size could be predicted from prey size and abiotic factors, which are less labour intensive to collect and could improve efficiency of conservation research.
+	\par \noindent Marine systems are one of the most difficult to monitor on the planet and one of the most at risk. Those at higher trophic levels are often the most at risk due to dependence on the stability of the rest of the food web. In this study, I aim to compare linear regression, generalised additive (GAM) and generalised linear mixed effects (GLMM) models for predicting predator size, based upon prey size, feeding interaction, habitat, temperature and depth. The optimal model was a generalised additive model (GAM), with prey mass, temperature and depth as explanatory variables. Feeding interaction was also found to have an effect using GLMM, but violated the assumptions of GAM, therefore could not be included in the optimal model. These findings implies that predator size could be predicted from prey size and abiotic factors, which are less labour intensive to collect and could improve efficiency of conservation research.
 	
 	\section{Introduction}
 	
 	\par \noindent With ever increasing risks to biodiversity \citep{Kerr1995}, and the close proximity of a sixth mass extinction extinction event \citep{Barnosky2011}, understanding the dynamics of ecological systems is increasingly important. One of the main threats to biodiversity is overexploitation, where many populations have been reduced to an unsustainable level. This is especially true of marine systems where, despite regulations, approximately 63\% of fish stocks are below a the threshold population size required to persist \citep{Heithaus2008}.
 	
-	\par \noindent ~\\ Population data is particularly difficult to collect in marine systems, especially on pelagic organisms in deep oceans, often restricting data collection to shallow coastal areas. One means of supplementing information in data poor systems is to construct predictive models from existing data and extrapolate with a variety of parameters \citep{Levins1966} This method can also aid in targeting studies to test likely models and aid in mitigation against overexploitation.
+	\par \noindent ~\\ Population data is particularly difficult to collect in marine systems, especially on pelagic organisms in deep oceans, often restricting data collection to shallow coastal areas. One means of supplementing information in data poor systems is to construct predictive models from existing data and extrapolate with a variety of parameters \citep{Levins1966}. This method can also aid in targeting studies to test likely models and aid in mitigation against overexploitation.
 	
 	\par \noindent ~\\ One classical model within ecosystem dynamics is that between predators and prey \citep{Freedman1983}. Information regarding predator and prey physiology and consumption is some of the most easily available in marine systems. The most common method is stomach contents analysis of organisms caught as by-catch or stranded \citep{Turesson2002}. This allows understanding of the position of each species within the food chain, and which prey sources are most important to or most threatened by specific predators. 
 	
@@ -74,7 +74,7 @@
 	
 	\subsection{Model Building and Fitting}
 	
-	\par \noindent I chose to compare three different type of model: a linear regression model, a generalised additive model (GAM) and a generalised linear mixed effects model (GLMM). As the response variable, predator mass, did not have a linear distribution, it was log transformed for use in the linear models, and as the response variable must be consistent to make the models comparable during selection, predator mass was also log transformed for the GAM.
+	\par \noindent I chose to compare three different types of model: a linear regression model, a generalised additive model (GAM) and a generalised linear mixed effects model (GLMM). The response variable, predator mass, did not have a linear distribution, therefore it was log transformed for use in the linear models, and as the response variable must be consistent for models to be comparable, predator mass was also log transformed for the GAM.
 	
 	\par \noindent ~\\When building the models, I started with the assumption that predator mass would be a function of the average mass of prey species. Additional explanatory variables were also considered and selected for in each model, dependent on whether they improved model fit, described below. The additional variables considered were: feeding interaction, habitat, depth and temperature. For each model, combinations of the explanatory variable were tested and the Akaike Information Criterion (AIC) calculated for each model, then compared to give the best fit to the data. The optimal models from each type of model were then compared, again using AIC, to find the model that overall best described the data. The linear regression model comparison was carried out using the "step" function in R, however no equivalent function was available for GAMs and GLMMs, so comparisons were carried out manually using anova tests and AIC to systematically reject variables which decreased the fit of the model. 
 	
@@ -100,7 +100,7 @@
 			m_{pred} \sim m_{prey - fixed} + d_{fixed} + h_{random} + i_{random} + \epsilon
 		\end{equation*}
 		
-	\noindent ~\\ As a type of linear model, prey mass and depth were both log transformed to give a linear distribution. Additionally collinearity and independence are also assumptions of GLMMs unless the non-independent factors are accounted for as random effects, allowing the inclusion of habitat and feeding interactions in this model. 
+	\par \noindent ~\\ As a type of linear model, prey mass and depth were both log transformed to give a linear distribution. Additionally collinearity and independence are also assumptions of GLMMs unless the non-independent factors are accounted for as random effects, allowing the inclusion of habitat and feeding interactions in this model. 
 
 
 	\subsection{Computing Languages}
