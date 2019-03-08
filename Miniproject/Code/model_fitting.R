@@ -19,7 +19,7 @@ p <- read.csv("../Data/pred_prey_wrangled.csv", header=TRUE, na.strings=c("","NA
 ###### MODEL 1: Linear Regression Model ######
 
 # defining initial version of the linear model with all possible explanatory variables
-# (excluded prey length, habitat and feeding interaction as non indepedent of possible explanatory variables)
+# (excluded habitat and feeding interaction as non indepedent of possible explanatory variables)
 
 lin_mod1 <- lm(log(pred_meanmass) ~ prey_meanmass + temp_mean + depth_mean, data = p)
 
@@ -159,3 +159,62 @@ optimal_model_final <- AIC_final$final_models[AIC_final$AIC == min(AIC_final$AIC
 ###### PLOTS FOR REPORT ######
 
 require(ggplot2)
+
+# Plotting linear model and used to explain glmm results
+p1 <-  ggplot(p, aes(x = log(prey_meanmass), y = log(pred_meanmass), colour = feeding_interaction, ylab = "Log Predator Mass")) + 
+    geom_point(size=2) + 
+    geom_abline(intercept = lin_mod$coefficients[1][1], slope = lin_mod$coefficients[2][1],  colour = "black") +
+    theme_bw() +
+    labs(x = "Log Prey Mass", y = "Log Predator Mass", colour = "Feeding Interaction")
+
+# save plot as a pdf
+pdf("../Results/lin_mod_feeding.pdf", width = 6, height = 6)
+print(p1)
+dev.off()
+
+
+p2 <- qplot(log(pred_meanmass), data = p, geom = "density", fill = feeding_interaction, alpha = I(0.5), xlab="Log Predator Mass", ylab = "Density") + 
+    theme_bw() + theme(legend.position = "none")
+
+# save plot as a pdf
+pdf("../Results/density_feeding.pdf", width = 6, height = 6)
+print(p2)
+dev.off()
+
+# Residuals Plots
+
+# Linear Model residual plot
+p3 <- ggplot(aes(x = log(pred_meanmass), y=resid(lin_mod)), data = p) + geom_point() + theme_bw() +
+    labs(y = "Residuals", x = "Log Predator Mass") + ylim(-4,6)
+
+# GAM model residual plot
+p4 <- ggplot(aes(x = log(pred_meanmass), y=resid(gam_mod)), data = p) + geom_point() + theme_bw() +
+    labs(y = "Residuals", x = "Log Predator Mass") + ylim(-4,6)
+
+# GLMM model residual plot
+p5 <- ggplot(aes(x = log(pred_meanmass), y=resid(glmm_mod)), data = p) + geom_point() + theme_bw() +
+    labs(y = "Residuals", x = "Log Predator Mass") + ylim(-4,6)
+
+# save plot as a pdf
+pdf("../Results/lin_mod_resid.pdf", width = 6, height=3)
+print(p3)
+dev.off()
+
+# save plot as a pdf
+pdf("../Results/gam_mod_resid.pdf", width = 6, height=3)
+print(p4)
+dev.off()
+
+# save plot as a pdf
+pdf("../Results/glmm_mod_resid.pdf", width = 6, height=3)
+print(p5)
+dev.off()
+
+
+# Plotting GAM models
+
+# save plot as a pdf
+pdf("../Results/gam_mod_plot.pdf",width=7, height = 10)
+par(mfrow = c(3,1))
+plot(gam_mod)
+dev.off()
