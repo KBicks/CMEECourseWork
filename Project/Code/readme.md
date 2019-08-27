@@ -1,1 +1,1 @@
-*This directory contains code files. This readme is present to maintain directory structure as main project has not started.*
+*This directory contains code files for my main CMEE masters project, see readme in Project folder for details.*
