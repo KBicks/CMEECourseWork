@@ -1,6 +1,6 @@
 ### CMEE Research Project README  
   
-*Introduction:* This directory contains the code and data files used for my masters project: INSERT TITLE. To run the project, use the run_project.sh file in the code respository. To generate the report, use the .TeX file in the code repository and associated bibTeX file for references, or see pdf version.  
+*Introduction:* This directory contains the code and data files used for my masters project: What drives spatial and temporal patterns within the residential range of two commercially important *Carcharhinus* species, and can they be used to predict broad scale displacements? To run the project, use the run_project.sh file in the code respository. To generate the report, use the .TeX file in the code repository and associated bibTeX file for references, or see pdf version.  
    
 *Contents:* There are four directories:  
 1. **Code** - script files for the project, in bash, LaTeX and R.  

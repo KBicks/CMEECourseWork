@@ -1,1 +1,1 @@
-*This directory contains data files. This readme is present to maintain directory structure as data has yet to be compiled.*
+*This directory contains data files required for running the code files for this project.*
