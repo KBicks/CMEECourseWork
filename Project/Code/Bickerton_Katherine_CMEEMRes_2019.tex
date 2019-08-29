@@ -18,15 +18,21 @@
 \usepackage{graphicx} % inserting graphics
 \usepackage{float} % positioning images
 \usepackage[export]{adjustbox}
+\usepackage{gensymb} % symbols including degree symbol
 \usepackage{subcaption} % allow multiple figures
 \usepackage{titlesec} % generate title page
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
 \usepackage{amsmath} % equation formatting
 \usepackage{amssymb} % symbols for equations
-\usepackage[comma]{natbib} % generate biblography
-\bibliographystyle{unsrtnat} % specific style of bibliography
+\usepackage[comma,authoryear]{natbib} % generate biblography
+\bibliographystyle{plainnat} % specific style of bibliography
 \usepackage{listings}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
 
 
 
@@ -38,7 +44,7 @@
 		\includegraphics[width = 7cm,left]{../Results/imperial_logo.png}
 		{\Large
 			\vskip2cm
-			What drives spatial and temporal patterns within the residential range of two commercially important \textit{Carcharhinus} species, and can they be used to predict broad scale displacements?
+			What drives spatial and temporal patterns within the residential range of two commercially important \textit{Carcharhinus} species, and can residential patterns be used to predict broad scale displacements?
 		}    
 		\vskip1cm	
 		{\large Katherine Bickerton\\
@@ -60,7 +66,7 @@
 	\noindent{\large \textit{Declaration}}\\
 	
 	\noindent
-	I declare that the data used in this project was collected and provided by my secondary supervisor Dr Matias Braccini, Western Australian Fisheries and Marine Laboratories, Government of Western Australia. I was provided with the raw dataset and carried out all processing, analysis and model development myself, with advice from Dr Matias Braccini and my primary supervisor, Dr David Jacoby, Institute of Zoology, Zoological Society of London. Dr Jacoby also provided training and R code for network analysis, which I adapted for the dataset used.
+	I declare that the data used in this project was collected and provided by my co-supervisor Dr Matias Braccini, Western Australian Fisheries and Marine Laboratories, Government of Western Australia. I was provided with the raw dataset and carried out all processing, analysis and model development myself, with advice from Dr Matias Braccini and my primary supervisor, Dr David Jacoby, Institute of Zoology, Zoological Society of London. Dr Jacoby also provided training and an R code framework for network analysis, which I adapted for the dataset used.
 	
 	
 	
@@ -70,22 +76,23 @@
 	
 	\section{Abstract}
 	
+	Large scale movements are common in shark species and are important for population connectivity and ultimately species persistence. Due to overexploitation many shark species are at risk of extinction including dusky sharks, \textit{Carcharhinus obscurus}, and sandbar sharks, \textit{Carcharhinus plumbeus}. Both species are of commercial importance to fisheries in Western Australia however little is known about their movements, especially within their home range. Network analyses, kernel density estimates and residency indices were used to examine acoustic telemetry data detailing residential movements of dusky and sandbar sharks within the Ningaloo Reef, WA. Dusky sharks, which have been previously shown to migrate in WA, showed strong seasonal variation in network density, residency patterns and depth use. A weaker seasonal variation occurred in sandbar sharks, with higher residency and more consistent depth use than dusky sharks. Area of home range was much lower in sandbar sharks and there was little variation between sexes of either species. The greatest variation was found between individuals, indicating high behavioural plasticity in both species. This complexity prevents the prediction of broad scale displacements from residential movements. If broad migrations do occur in sandbar sharks in WA, they are likely to be occurring either at greater depths than or on smaller scales than those of duskies. A greater number of acoustic receivers or use of bio-loggers would be recommended to increase accuracy of predictions, and thereby aid fisheries management.
 	
 	\newpage
 	
 	\section{Introduction}
 	
-	The majority of sharks species are known to undertake large scale movements or regular migrations \citep{Speed2010,Espinoza2016}, on the scale of tens to thousands of kilometres \citep{Braccini2016a}. These movements enable connectivity between populations, and can prevent genetic drift and ultimately species persistence \citep{Olds2012,Espinoza2016}. However, broad scale marine movements are difficult to track, especially in highly mobile species such as sharks, which exhibit complex life histories \citep{Baeyaert2018}. This limits our understanding of the role that species play within ecosystems, their habitat use and threats facing them \citep{Espinoza2016}.\\
+	The majority of sharks species are known to undertake large scale movements or regular migrations \citep{Speed2010,Espinoza2016}, on the scale of tens to thousands of kilometres \citep{Braccini2016a}. These movements enable connectivity between populations, and can prevent genetic drift and allow species persistence \citep{Olds2012,Espinoza2016}. However, broad scale marine movements are difficult to track, especially in highly mobile species such as sharks, which exhibit complex life histories \citep{Baeyaert2018}. This limits our understanding of the role that sharks play within ecosystems, their habitat use and threats facing them \citep{Espinoza2016}.\\
 	\\
-	A major threat to shark populations is overexploitation by commercial fisheries \citep{Worm2013}, both as targeted catch and as bycatch. Estimates of shark take ranged from 6.4 - 7.9\% of the global population \citep{Worm2013}, with high proportions of catches going unreported \citep{Clarke2006}. Shark finning is widely acknowledged as a driver of shark mortality due to the high value of fins in Eastern Asia \citep{Clarke2013}. Despite regulations against shark finning by countries including Australia, Brazil, the USA and the European Union \citep{Clarke2006,Benavides2011,Braccini2017c}, unregulated catches within Chinese waters and illegal catches globally, lead to high error margins in estimates of decline \citep{Worm2013}.\\
+	A major threat to shark populations is overexploitation by commercial fisheries \citep{Worm2013}, both as targeted catch and as bycatch. Estimates of shark take ranged from 6.4 - 7.9\% of the global population in 2013 \citep{Worm2013}, with high proportions of catches going unreported \citep{Clarke2006}. Shark finning is widely acknowledged as a driver of shark mortality due to the high value of fins in Eastern Asia \citep{Clarke2013}. Despite regulations against shark finning by countries including Australia, Brazil, the USA and the European Union \citep{Clarke2006,Benavides2011,Braccini2017c}, unregulated catches within Chinese waters and illegal catches globally, lead to high error margins in estimates of decline \citep{Worm2013}.\\
 	\\
-	Understanding movements is necessary for effective management and to mitigating against threats such as shark finning \citep{Espinoza2016}. One method of monitoring movements is the use of acoustic arrays and tags, which have traditionally be used over short spatial and temporal ranges \citep{Braccini2017}, however recent studies have used long term acoustic telemetry to determine fine scale movements in several species of reef shark \citep{Lea2016} and broader spatial scales in bull sharks, \textit{Carcharhinus leucas}, \citep{Espinoza2016}. Network analysis is also now regularly used in spatial studies, as it allows the interpretation of complex movement behaviours \citep{Lea2016}. Spatial network analyses allow the incorporation of biotic and abiotic factors, to build models and make predictions regarding future movements, making it a useful tool in conservation management \citep{Jacoby2016}.\\ 
+	Understanding movement is necessary for effective management and to mitigating against threats such as shark finning \citep{Espinoza2016}. One method of monitoring movement is the use of acoustic telemetry, which has traditionally be used over short spatial and temporal ranges \citep{Braccini2017}. Recent studies have adapted this method for long term monitoring of several coastal shark species, allowing fine scale movements, \citep{Lea2016}, and broad scale displacements \citep{Espinoza2016} to be mapped. The use of network theory to analyse acoustic telemetry data is also becoming common place in spatial studies \citep{Jacoby2016}. Spatial network analyses allow the interpretation of complex movement behaviours and can incorporate biotic and abiotic factors \citep{Lea2016}. This enables effective conservation management of marine species by building more accurate models of future movements \citep{Jacoby2016}.\\ 
 	\\
-	Movements of dusky, \textit{Carcharhinus obscurus}, and sandbar sharks, \textit{Carcharhinus plumbeus}, have been monitored using acoustic telemetry \citep{Braccini2016} and fisheries catch logs along the coast of Western Australia \citep{Braccini2017a}. Both species are of commercial importance to WA shark fisheries \citep{Braccini2017a} however both are also listed as Vulnerable by the IUCN Red List \citep{Musick2009,Musick2009a}, therefore understanding their movements is important economically and ecologically. As coastal species, they are at particularly high risk due to their close proximity to humans, leading to easier exploitation \citep{Espinoza2015} and a higher risk of habitat destruction \citep{Speed2010}. Additionally, both species have been previously overfished \citep{Benavides2011,Braccini2017a} and sandbar sharks have a particularly high fin to body size ratio making them more vulnerable to finning, due to higher fin value \citep{Braccini2017c}.\\
+	Movements of dusky, \textit{Carcharhinus obscurus}, and sandbar sharks, \textit{Carcharhinus plumbeus}, have been monitored using acoustic telemetry \citep{Braccini2016} and fisheries catch logs along the coast of Western Australia \citep{Braccini2017a}. Both species are of commercial importance to WA shark fisheries \citep{Braccini2017a} however both are also listed as Vulnerable by the IUCN Red List \citep{Musick2009,Musick2009a}, therefore understanding their movements is important economically and ecologically. As coastal species, they are at particularly high risk due to their close proximity to humans, leading to easier exploitation \citep{Espinoza2015} and a higher risk of habitat destruction \citep{Speed2010}. Additionally, both species have been previously overfished \citep{Benavides2011,Braccini2017a}. Part of this take was for the Asian fin trade as sandbar sharks have a particularly high fin to body size ratio, increasing commercial value. \citep{Braccini2017c}.\\
 	\\
-	Studies of \textit{C. obscurus} and \textit{C. plumbeus} have mainly examined large scale movements or movements of juveniles. The two species are often grouped as both are relatively long lived, late to mature and have long gestation periods \citep{Cortes2000,Benavides2011,Braccini2017c,Junge2019} adults are more important for population stability. There is evidence that mature \textit{C. obscurus} undertake periodic large scale migrations \citep{Hussey2009,Braccini2017b}, however there is little evidence of this in mature \textit{C. plumbeus} individuals \citep{Mcauley2005}. Furthermore, network analyses have not been applied to either species in WA and have yet to consider individual behaviours in addition to population trends.\\
+	Studies of \textit{C. obscurus} and \textit{C. plumbeus} have mainly examined juvenile movements and broad scale displacements. The two species are often grouped due to their similar life histories: both are relatively long lived, late to mature and have long gestation periods \citep{Cortes2000,Benavides2011,Braccini2017c,Junge2019}. These traits indicate that the persistence of mature individuals is key to population stability \citep{Speed2010}. There is evidence that mature \textit{C. obscurus} undertake periodic large scale migrations \citep{Hussey2009,Braccini2017b}, however there is little evidence of this in mature \textit{C. plumbeus} individuals \citep{Mcauley2005}. Furthermore, network analyses have not been applied to the movements of either species and individual behaviours have yet to be incorporated into movement models.\\
 	\\	
-	This study will examine the movements of mature dusky and sandbar sharks within their residential range, Ningaloo Reef, WA, comparing the two species spatially and temporally. Network analyses will be applied to long term acoustic monitoring data, and individual scale behaviours examined. The aims of the study are to (1) compare variation in acoustic network use within and between species, (2) compare variation in area and depth use between and and within species and (3) compare residency patterns between and within species, all within their residential range with respect to individual, sex, season and time of day. This will then be linked as to what drives movements within the species home ranges and whether these movements can be extrapolated to give information regarding large scale movements.
+	This study will examine the movements of mature dusky and sandbar sharks within their residential range, Ningaloo Reef, WA. Network analyses will be applied to long term acoustic monitoring data, and individual scale behaviours examined. The aims of the study are to (1) compare variation in acoustic network use within and between species, (2) compare variation in area and depth use between and and within species and (3) compare residency patterns between and within species. All analyses will consider individual, sexual, seasonal and diel variation inside Ningaloo reef. This will then be linked to movement drivers within the species home ranges and whether residential movements can be extrapolated to give information regarding large scale movements, based upon known migrations of \textit{C. obscurus} in WA.
 	
 	
 	\newpage
@@ -94,18 +101,16 @@
 	
 	\subsection{Data Collection}
 	
-	In this study, acoustic telemetry was used to track the movements adult and sub-adult dusky sharks, \textit{Carcharhinus obscurus}, and sandbar sharks, \textit{Carcharhinus plumbeus}, over an array of 437 acoustic receivers located along the coast of Western Australia (Figure \ref{arrays}). Detection data was used from 2011 to 2018, with the first detection on the 2nd July 2011 and the last on the 5th September 2018. All shark tagging and deployment and retrieval of receivers was carried out by the Government of Western Australia’s Department of Fisheries (DoF), and raw dataset compiled by Dr Matias Braccini of the DoF.\\
+	In this study, acoustic telemetry was used to track the movements adult and sub-adult, as defined in \citealt{Braccini2017}, dusky sharks, \textit{Carcharhinus obscurus}, and sandbar sharks, \textit{Carcharhinus plumbeus}, over an array of 437 acoustic receivers located along the coast of Western Australia (Figure \ref{arrays}). Detection data was used from 2011 to 2018, with the first detection on the 2nd July 2011 and the last on the 5th September 2018. All shark tagging and deployment and retrieval of receivers was carried out by the Government of Western Australia’s Department of Fisheries (DoF), and the raw dataset compiled by Dr Matias Braccini of the DoF.\\
 	\\
-	A total of 207 adult or sub-adult sharks, 103 \textit{C. obscurus} and 104 \textit{C. plumbeus}, were tagged between April and September 2011-2015 and 2017 by experienced taggers during surveys by the DoF. All sharks tagged were measured and sexed, and date and location of release recorded. Tagging was carried out along the coast between Broome and Esperance, WA, mainly within the Ningaloo reef (Figure \ref{releases}). For more details on the tagging procedure please refer to Braccini et al. \citeyear{Braccini2017c}.\\
+	A total of 207 adult or sub-adult sharks, 103 \textit{C. obscurus} and 104 \textit{C. plumbeus} were implanted with acoustic tags. All tagging occurred anually in the austral autumn and winter, between 2011 and 2017 (with the exception of 2016), by experienced taggers during surveys by the DoF. All sharks tagged were measured and sexed, and date and location of release recorded. Tagging was carried out along the coast between Broome and Esperance, WA, mainly within the Ningaloo reef (Figure \ref{releases}). For more details on the tagging procedure please refer to Braccini et al. \citeyear{Braccini2017c}.\\
 	\\  
-	The receivers were split into northern (Figure \ref{arrays}a) and southern arrays (Figure \ref{arrays}b \& c). In the north, 57 receivers were deployed in three lines arrays between the Tantabiddi Creek and Coral Bay, 21.5°S - 23.5°S, 113.5°E - 114°E, with a depth range of 2 – 161 meters. Although shark tagging occurred further to the north, cyclone exposure and the width of the continental shelf prevented more receivers from being deployed. The 380 southern receivers were split into five line arrays, two on the west coast and three on the south coast between Perth and the Recherche Archipelago, 31°S - 35.5°S, 114°E - 124°E, with a depth range of 9 – 198 meters. The receivers were initially set up to mitigate against white and tiger shark attacks in the south \citep{McAuley2016}, and to monitor coral reef fish spawning \citep{Babcock2017} therefore are in line arrays as opposed to the grids that are used in most network analysis experiments. For full details of the model of receivers used and data recovery, see \citealt{Braccini2017c,Braccini2017b}.\\
+	The receivers were split into northern (Figure \ref{arrays}a) and southern arrays (Figure \ref{arrays}b \& c). In the north, 57 receivers were deployed in three lines arrays between the Tantabiddi Creek and Coral Bay, 21.5\degree S - 23.5\degree S, 113.5\degree E - 114\degree E, with a depth range of 2-161 meters. Although shark tagging occurred further to the north, cyclone exposure and the width of the continental shelf prevented more receivers from being deployed. The 380 southern receivers were split into five line arrays, two on the west coast and three on the south coast between Perth and the Recherche Archipelago, 31.0\degree S - 35.5\degree S, 114\degree E - 124\degree E, with a depth range of 9-198 meters. The receivers were initially set up to mitigate against white and tiger shark attacks in the south \citep{McAuley2016}, and to monitor coral reef fish spawning in the north \citep{Babcock2017}, therefore are in line arrays as opposed to the grids that are used in most network analysis experiments. For full details of the receivers used and data recovery, see \citealt{Braccini2017c,Braccini2017b}.\\
 	\\
-	During the eight years of monitoring, 130 of the 207 sharks tagged were detected (Table \ref{sum_stats}), 68 \textit{C. obscurus} and 62 \textit{C. plumbeus}, across 183 of the 437 receivers, with a total of 196,507 detections. The majority of these detections, 191,448, occurred with the residential range of both populations, the Ningaloo reef. Within the Ningaloo reef, 118 sharks were detected across 57 receivers. For each detection, the location, time, date, depth and tag code were recorded. This dataset, along with the size and sex data for each individual, and the location and depth of each receiver, was used in the analysis. \\
+	During the 8 years of monitoring, 130 of the 207 sharks tagged were detected, 68 \textit{C. obscurus} and 62 \textit{C. plumbeus}, across 183 of the 437 receivers (Table \ref{sum_stats}). The majority of detections (97.4\%, total = 196507) occurred within the residential range of both populations, the Ningaloo reef. Within the Ningaloo reef, 118 sharks were detected across 57 receivers on more than five separate days. For each detection, the location, time, date, depth and tag code were recorded. This dataset, the demographic data from tagging, and the location and depth of each receiver, were used in analysis.
 	
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% \usepackage{multirow}
-\begin{table}[h]
+
+\begin{table}[h!]
 	\caption{Summary of detected shark demographics, where M, F and U stand for male, female and unknown respectively. Size range represents fork length, measured at time of tagging in meters. Time monitored is the number of days between tagging and the most recent detection.}
 	\centering
 	\begin{tabular}{@{}lcccccc@{}}
@@ -124,7 +129,7 @@
 	
 \begin{figure}
 	\centering\includegraphics[width=\textwidth]{../Results/arrays_combined2.pdf}
-	\caption{Distribution of acoustic receivers in Western Australia, each cross representing an individual receiver. (a) Northern receivers within the Ningaloo reef, total = 57, Northern Line array = 7, Central Line array = 13 and Stanley Pool and Southern Line arrays = 37. Green shading represents the Ningaloo marine World Heritage Site \citep{FlandersMarineInstitute2013}. (b) Perth and South Western receivers, total = 324, Perth array = 232, Hamelin array = 48 and Chatham array = 44. (c) Southern receivers, total = 56, Bald array = 33 and Recherche array = 23. This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
+	\caption{Distribution of acoustic receivers in Western Australia, each cross (x) representing an individual receiver. (a) Northern receivers within the Ningaloo reef, total = 57, Northern Line array = 7, Central Line array = 13 and Stanley Pool and Southern Line arrays = 37. Green shading represents the Ningaloo marine World Heritage Site \citep{FlandersMarineInstitute2013}. (b) Perth and South Western receivers, total = 324, Perth array = 232, Hamelin array = 48 and Chatham array = 44. (c) Southern receivers, total = 56, Bald array = 33 and Recherche array = 23. This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
 	\label{arrays}
 \end{figure}
 
@@ -132,32 +137,32 @@
 
 \begin{figure}
 	\centering\includegraphics[width=0.6\textwidth]{../Results/Release_map.pdf}
-	\caption{Locations of shark tagging of sharks detected between 2011 and 2018 (n = 130). The number within each circle gives the number of sharks tagged at that location and the coloured border gives the year of tagging (yellow = 2011, orange = 2012, red = 2013, purple = 2014, blue = 2015, green = 2017, no tagging occured in 2016 \& 2018.) This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011} and bathymetry raster \citep{Whiteway2009}.}
+	\caption{Locations of shark tagging of sharks detected between 2011 and 2018 (n = 130). The number within each circle gives the number of sharks tagged at that location and the coloured border gives the year of tagging (yellow = 2011, orange = 2012, red = 2013, purple = 2014, blue = 2015, green = 2017, no tagging occurred in 2016 \& 2018.) This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011} and bathymetry raster \citep{Whiteway2009}.}
 	\label{releases}
 \end{figure}
 
-	
+
 	\subsection{Data Analysis}
 	
-	All data manipulation, analysis and model building was carried out using R version 3.6.1 \citep{RCoreTeam2015}. The tidyverse package \citep{Wickham2017} was used for all data manipulation and plots and the lubridate package \citep{Grolemund2011} for formatting temporal data. Analyses used detections from the Ningaloo reef arrays exclusively (defined as any detection north of 24°S), as both species are show high residency to the reef \citep{Braccini2017}. The analysis was split into four sections: spatial network analysis, home range estimation using centres of activity, residency patterns using a residency index, and detection patterns examining detections per day. A combination of analyses methods were used as although spatial networks can be used to explain a movement dynamics, more traditional approaches can also provide valuable insight \citep{Baeyaert2018}. \\
+	All data manipulation, analysis and model building was carried out using R version 3.6.1 \citep{RCoreTeam2015}. The tidyverse package \citep{Wickham2017} was used for all data manipulation and plots and the lubridate package \citep{Grolemund2011} for formatting temporal data. Analyses used detections from the Ningaloo reef arrays exclusively (defined as any detection north of 24\degree S), as the majority detections of both species occured within the reef \citep{Braccini2017}. The analysis was split into four sections: spatial network analysis, home range estimation using centres of activity, residency patterns using a residency index, and detection patterns examining detections per day. A combination of analyses methods were used as although spatial networks can be used to explain movement dynamics, more traditional approaches can also provide valuable insight \citep{Baeyaert2018}. \\
 	\\
 	In each section of the analyses, linear mixed models were used to examine the relationship between the response variable (network density, kernel utilisation distribution, residency index and depth index respectively) and a range of fixed explanatory variables, using the lme4 R package \citep{Bates2015}. Linear mixed models were chosen so non-independent individual variation could be included as a random variable, and as data was linear but not normally distributed in all cases. Between and within species variation were both modelled. Model distribution was chosen by comparing the fit of quantile-quantile plots again normal, log normal, Poisson, negative binomial and gamma probability distributions, using the car \citep{Fox2019} and MASS \citep{Venables2002} packages in R. Test files were then generated, and each model tested, then outputs compared against the original data to check model fit, using the merTools package \citep{Knowles2019}.\\
 	\\
-	Fixed explanatory variables used were species, sex, season, time of day and migratory status. For sex, one individual of unknown sex was excluded. Season and time of day (day or night) were assigned based upon Austral seasons (Summer: December – February, Autumn: March – May, Winter: June – August, Spring: September – November) and average sunrise and sunset times per month across the years of monitoring \citep{GeoscienceAustralia2015}. Data was not stratified by year due to small sample sizes in several years. In models examining \textit{C. obscurus}, migratory status was used as an explanatory variable as the species are known to be resident in Ningaloo and make periodic migrations south \citep{Braccini2017b}. Migratory individuals were those that made at least one return journey between the Ningaloo receiver arrays and the southern arrays and were detected at least four times. Five \textit{C. obscurus} were only detected in the southern arrays and are shown to be younger individuals, most likely moving north from their nursery grounds, by \citealt{Braccini2017b}, so were also excluded from this study. Model selection was carried out using the Akaike Information Criterion (AIC), for each subset with best fit denoted by the lowest AIC value and highest marginal $R^2$ value, calculating using the MuMIn package for R \citep{Barton2019}, defined as individual variance explained \citep{Nakagawa2013}. Each model was then checked using a traditional likelihood ratio test (anova) comparing each model with a null model.\\
+	Fixed explanatory variables used were species, sex, season, time of day and migratory status. For sex, one individual of unknown sex was excluded. Season was assigned based upon Austral seasons (Summer: December-February, Autumn: March-May, Winter: June-August, Spring: September-November). Time of day, either day or night, was defined average sunrise and sunset times per month across the years of monitoring \citep{GeoscienceAustralia2015}. Data was not stratified by year due to small sample sizes in several years. In models examining \textit{C. obscurus}, migratory status was used as an explanatory variable as the species are known to be resident in Ningaloo but make periodic migrations south \citep{Braccini2017b}. Migratory individuals were those that made at least one return journey between the Ningaloo receiver arrays and the southern arrays and were detected on least five days. Five \textit{C. obscurus} were only detected in the southern arrays and are shown to be younger individuals, most likely moving north from their nursery grounds, by \citealt{Braccini2017b}, so were also excluded from this study. Model selection was carried out using the Akaike Information Criterion (AIC), for each subset with best fit denoted by the lowest AIC value and highest marginal $R^2$ value, calculating using the MuMIn package for R \citep{Barton2019}, defined as individual variance explained \citep{Nakagawa2013}. Each model was then checked using a traditional likelihood ratio test (ANOVA) comparing each model with a null model.\\
 	
 	
 	\subsubsection{Spatial Networks}
 	
 	Network analysis examines the relationship between nodes and the connections between them, known as edges \citep{West2001}. In this system, the receivers are used as the nodes and individual shark movements as edges. Spatial networks were built for each species, sex and individual, then individual networks were subset by time of day and season. To generate each network, movements between receivers were calculated. The R package igraph \citep{Csardi2006} was used to calculate adjacency matrices and edge lists for each movement between receivers. Network density was calculated and is the number of edges in each network divided by the total number of possible edges \citep{Mourier2018}, representing the proportion of the total residential area (within the Ningaloo arrays) used by each individual. Network visualisations were generated using the rgdal package for R \citep{Bivand2019} to aid analysis. \\
 	\\
-	Network density was used as the response variable in each linear mixed model with a log normal probability distribution, and species, sex, season, time of day and migratory status (\textit{C. obscurus} only) as fixed explanatory variables. Any individuals with no movements detected were excluded. \\
+	Network density was used as the response variable in each linear mixed model with a log normal probability distribution, and species, sex, season, time of day and migratory status (\textit{C. obscurus} only) as fixed explanatory variables. Any individuals \textless 5 movements detected were excluded. \
 	
 	
 	\subsubsection{Home Range}
 	
 	To investigate home range, centres of activity were calculated for each individual, and subset for each season and time of day. The centre of activity (COA) of each shark was calculated using the VTrack package \citep{Campbell2012}, which calculates a weighted mean position based upon detection locations. This method was evaluated and found to be reasonably accurate within an array when compared to actively tracked individuals \citep{Simpfendorfer2002}. The COAs were used to calculate minimum convex polygons (MCPs), which define the minimum area containing all detections of an individual, centred on the COA. To calculate these, a minimum of four detections at different receivers within the Ningaloo arrays were required, individuals that did not meet this criterion were excluded. MCPs give an estimate of the extent of range within the Ningaloo reef however a better estimate for home range is a kernel utilisation distribution (KUD). This method uses location and density of detections in a probability density function to estimate the probability of the individual being found within a certain area \citep{Jacoby2016}. Core or home range was then calculated as the area within the KUD where the most activity occurred, with a size of 50\% of the total KUD. MCPs and KUDs were calculated using the adehabitatHR package \citep{Calenge2006}, packages sp \citep{Pebesma2005,Bivand2013} and rgdal \citep{Bivand2019} were used to transform between coordinate systems and export shapefiles of KUD areas respectively. \\
 	\\
-	KUD area was used as the response variable for linear mixed models examining home range. The models used a gamma distribution, and species, sex, season, time of day and migratory status (\textit{C. obscurus} only) as fixed explanatory variables. Individuals with $<$5 movements in a subset were excluded, consistent with the overall COA calculations.\\
+	KUD area was used as the response variable for linear mixed models examining home range. The models used a gamma distribution, and species, sex, season, time of day and migratory status (\textit{C. obscurus} only) as fixed explanatory variables. Individuals with \textless 5 movements in a subset were excluded, consistent with the overall COA calculations.\\
 	
 	
 	\subsubsection{Residency Patterns}
@@ -171,14 +176,14 @@
 	
 	Number of detections per day per individual were calculated then split by depth to allow investigation of depth use. Depth of detections were split into 25m bands, with receiver depths ranging between 1 – 161 meters within Ningaloo reef. \\
 	\\
-	Mixed models were built using number of detections per day as response variable, with a log normal distribution. Fixed explanatory variables used were sex, species, depth band, time of day, season and migratory status (\textit{C. obscurus} only). To further examine depth patterns, fixed variables were tested as random variables with depth band as the only fixed variable, within further mixed models, again using a log normal distribution. Individuals with $<$5 unique days detected and depth bands with fewer than 5 detections were excluded in consistency with the rest of the study.\\
+	Mixed models were built using number of detections per day as response variable, with a log normal distribution. Fixed explanatory variables used were sex, species, depth band, time of day, season and migratory status (\textit{C. obscurus} only). To further examine depth patterns, fixed variables were tested as random variables with depth band as the only fixed variable, within further mixed models, again using a log normal distribution. Individuals with $<$5 unique days detected and depth bands with fewer than 5 detections were excluded in consistency with the rest of the study.
 	
 	
 	\newpage
 	
 	\section{Results}
 	
-	To examine movement behaviour of dusky, \textit{Carchahinus obscurus}, and sandbar sharks, \textit{Carcharhinus plumbeus}, generalised linear mixed effect models (GLMMs) were used with spatial network density, kernel utilisation distribution area, residency index and detections per day as response variables. Within and between species variation was accounted for by modelling both species together and separately. Individual shark ID was used as a random effect to account for individual variation and non-independence of related individuals and all models used a single fixed explanatory variable. The best model for each response variable was selected using the Akaike Information Criterion (AIC), where the lowest value indicates best fit \citep{Bolker2009} and variance explained ($R^2$), where possible \citep{Nakagawa2013}. Traditional null model comparisons using likelihood ratio tests were also used as a third test of model fit however outputs from these were interpreted with caution as p-values are considered less relevant when using mixed effect models \citep{Posada2004}. Models with multiple explanatory variables were tested and found, in all cases, to explain less of the variance and have a higher AIC value than models with single variables. Full model outputs can be found in the Appendices. 
+	To examine movement behaviour of dusky, \textit{Carcharhinus obscurus}, and sandbar sharks, \textit{Carcharhinus plumbeus}, generalised linear mixed effect models (GLMMs) were used with spatial network density, kernel utilisation distribution area (KUD), residency index (RI) and detections per day as response variables. Within and between species variation was accounted for by modelling both species together and separately. Individual shark ID was used as a random effect to account for individual variation and non-independence of related individuals and all models used a single fixed explanatory variable. The best model for each response variable was selected using the Akaike Information Criterion (AIC), where the lowest value indicates best fit \citep{Bolker2009} and variance explained ($R^2$), where possible \citep{Nakagawa2013}. Traditional null model comparisons using likelihood ratio tests were also used as a third test of model fit however outputs from these were interpreted with caution as p-values are considered less relevant when using mixed effect models \citep{Posada2004}. Models with multiple explanatory variables were tested and found, in all cases, to explain less of the variance and have a higher AIC value than models with single variables. Full model outputs can be found in the Appendices. 
 	
 	
 	\subsection{Spatial Networks}
@@ -221,7 +226,7 @@
 	\\
 	
 	\begin{figure}[h!]
-		\centering\includegraphics[width=0.9\textwidth]{../Results/network_season.pdf}
+		\centering\includegraphics[width=0.9\textwidth]{../Results/ri_season.pdf}
 		\caption{Seasonal variation in residency index of \textit{Carcharhinus obscurus} (n = 51) and \textit{Carcharhinus plumbeus} (n = 59). Bars give mean average residency index and error bars give standard error. Seasons are defined as standard Austral seasons.}
 		\label{ri_seasons}
 	\end{figure}		
@@ -238,24 +243,29 @@
 	\\
 	Depth of detections, although have a low $R^2$ and high AIC value, did highlight seasonal trends. Detections of \textit{C. obscurus} between 0-25m and over 100m only occurred in winter and spring, whereas detections between 25-100m occurred in all seasons. None were detected above 125m. Detections of \textit{C. plumbeus} between 0-125m occurred during all seasons, however the number of detections at depths below 25m were significantly lower. \textit{C. plumbeus} were detected at depths \textgreater125m but only during winter and autumn. The northern lines array in Figure \ref{depth_north} shows the near constant distribution of sandbar sharks (orange) throughout the year and absence of dusky sharks (purple) in the summer. The central line array, Figure \ref{depth_mid}, shows the decrease in dusky sharks in summer and a more restricted depth range in the spring. The Stanley Pool and southern line arrays, Figure \ref{depth_south}, show a decrease in dusky sharks through spring and summer, as well as more shallow water detections than in sandbars. Figures \ref{depth_north}-\ref{depth_south} all highlight the greater depths at which sandbars are found throughout the year.
 	
+	\newpage
 	
 	\begin{figure}[h!]
 		\centering\includegraphics[width=0.85\textwidth]{../Results/north.pdf}
-		\caption{Seasonal variation in core kernel utilisation areas of \textit{Carcharhinus obscurus} (purple) and \textit{Carcharhinus plumbeus} (orange), within the northern line array, Ningaloo reef, WA. Black crosses show acoustic receiver locations and water depth is given parallel to each bathymetry contour This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
+		\caption{Seasonal variation in core kernel utilisation areas of \textit{Carcharhinus obscurus} (purple) and \textit{Carcharhinus plumbeus} (orange), within the northern line array, Ningaloo reef, WA. Black crosses (x) show acoustic receiver locations and water depth is given parallel to each bathymetry contour This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
 		\label{depth_north}
 	\end{figure}		
 	\begin{figure}[h!]
 		\centering\includegraphics[width=0.85\textwidth]{../Results/mid.pdf}
-		\caption{Seasonal variation in core kernel utilisation areas of \textit{Carcharhinus obscurus} (purple) and \textit{Carcharhinus plumbeus} (orange), within the central line array, Ningaloo reef, WA. Black crosses show acoustic receiver locations and water depth is given parallel to each bathymetry contour This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
+		\caption{Seasonal variation in core kernel utilisation areas of \textit{Carcharhinus obscurus} (purple) and \textit{Carcharhinus plumbeus} (orange), within the central line array, Ningaloo reef, WA. Black crosses (x) show acoustic receiver locations and water depth is given parallel to each bathymetry contour This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
 		\label{depth_mid}
-	\end{figure}		
+	\end{figure}	
+
+\newpage
+	
 	\begin{figure}[h!]
 		\centering\includegraphics[width=0.9\textwidth]{../Results/Coral_bay.pdf}
-		\caption{Seasonal variation in core kernel utilisation areas of \textit{Carcharhinus obscurus} (purple) and \textit{Carcharhinus plumbeus} (orange), within the Stanley Pool and southern line arrays, Ningaloo reef, WA. Black crosses show acoustic receiver locations and water depth is given parallel to each bathymetry contour This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
+		\caption{Seasonal variation in core kernel utilisation areas of \textit{Carcharhinus obscurus} (purple) and \textit{Carcharhinus plumbeus} (orange), within the Stanley Pool and southern line arrays, Ningaloo reef, WA. Black crosses (x) show acoustic receiver locations and water depth is given parallel to each bathymetry contour This map was generated using QGIS \citep{QGISDevelopmentTeam2019}, with a base map shapefile \citep{AustralianBureauofStatistics2011}, bathymetric contour shapefile \citep{GEBCOCompilationGroup2019} and bathymetry raster \citep{Whiteway2009}.}
 		\label{depth_south}
-	\end{figure}		
-		
-	\newpage
+	\end{figure}
+
+	\pagebreak
+	
 	\section{Discussion}
 	
 	This study aimed to address the drivers of residential movements and whether they could be used to predict large scale movements by comparing variation in acoustic network use, area and depth use and residency between and within species. This was examined using acoustic telemetry data on two species of shark dusky, \textit{Carcharhinus obscurus}, and sandbar, \textit{Carcharhinus plumbeus}.
@@ -264,106 +274,35 @@
 	
 	Spatial network analysis was used to assess use of the reef. Network density was chosen as the best network metric for this system as it contained line arrays as opposed to conventional grid arrays, and spanned a much larger area, rendering any network metric reliant on equal spacing of nodes meaningless. Network density is not as dependent on this, as it gives a proportion of the edges used out of the total possible edges, as opposed to the length of each edge.\\
 	\\
-	Network density showed very little variance between species, indicating both species use similar proportions of the reef. When split by season, dusky sharks showed a distinct pattern, with proportion used decreasing significantly in winter then increasing again in the summer. 
-	
-	
-	Males = larger network than females in C. amblyrhynchos - grey reef shark - \citep{Espinoza2015}
-	no change in network size with sex in bull and silvertip - \citep{Espinoza2015}
-	Highlu variable between individuals = \citep{Lea2016}
-	increased activity at night in several adult shark species but no evidence in juveniles - sixgill, leopard, white tip reef, grey reef and lemon \citep{Speed2010}
-	
-	The close proximity of receivers within the same line array could have increased probability of detection however receivers in the same line were at different depths, removing a proportion of this bias, however outputs should still be interpreted with reference to other metrics;
-	- justification of network density	
-	- results of network models and interpretations - ecologically
-	- individual variation in networks 
-
+	Network density showed very little variance between species, indicating both species use similar proportions of the reef. When split by season, dusky sharks showed a distinct pattern, with proportion of edges used decreasing significantly in winter then increasing again in the summer. This could be linked to migratory individuals moving south for summer migration and thereby using a higher proportion of receivers, then only using a relatively small proportion when resident during the winter. The seasonal pattern in sandbar sharks was not as distinct, with the highest in summer and a steady decrease through to spring, but only a small overall change. This indicates less change in reef use and therefore potentially a lower likelihood of migration. Many species of shark, such as lemon, leopard, whitetip reef and grey reef sharks, show increased movement and therefore higher network density at night \citep{Speed2010}, however no evidence of this was detected in either of the study species, which had a fairly consistent daily network density.\\
+	\\
+	Sex accounted for 13\% of deviance in network density of \textit{C. obscurus}. This has been observed in grey reef sharks, \textit{C. amblyrhynchos}, in eastern Australia \citep{Espinoza2015}, but was linked with larger size of males leading to a larger number of movements. Size shows very little variation with sex in dusky sharks \citep{Braccini2017b}, however the majority of males tagged were migratory so the difference between sexes is more likely to be correlated with proportions migrating than size. This could not be shown statistically in this study due to a very low sample size of non-migratory duskies. The lack of difference in network density with sex in \textit{C. plumbeus} is more similar to that of bull \textit{C. leucas} and silvertip sharks \textit{C. albimarginatus} no differentiation in network density with sex \citep{Espinoza2015}.\\
+	\\
+	Variation in network density did not correlate with migratory status in \textit{C. obscurus} suggesting use of the reef is more linked closely individual variation, rather than population dynamics, as seen in \citealt{Lea2016}.
 	
 	\subsection{Area \& Depth Use}
 	
-	- KUD results and implications
-	main factor in grey reef and bull sharks = size \citep{Speed2010} which is not application for this study due to small size range
-	- individual variation in KUD
-	
-	- Depth analysis through detection data and implications
-
-	
-	- seasonal - 
-	During gestation female sand tiger sharks C. taurus, move north into warmer waters - link with moving to shallower water - could be gestation - and also carry out large scale migrations in S Africa and give birth in cooler southern waters \citep{Dicken2007}
-	juv sandbars = deeper dives in winter than summer - E coast of N america \citep{Speed2010}
-	juv lemon sharks - temp for optimal metabolic performance - movements over time with climate change/ drives depth changes over seasons \citep{Speed2010}
-	- time of day - 
-	links to movements of prey - in Caribbean reef shark more time spent at surface at night due to prey movements up \citep{Speed2010}
-	
-	
-	- individual variation in depths
-
+	KUD area showed no variance with sex, season or time of day in either species, showing annual consistency with the area used. Increase in home range has previously been found in male grey reef sharks however size often correlates with home range and male grey reef sharks are larger than females \citep{Speed2010}, explaining the variation, whereas this size difference is not present in dusky or sandbar sharks. Dusky sharks had significantly larger home ranges than sandbars, with a difference of 1km between average core ranges. This could be due to greater variation in movement of the migratory dusky sharks, or more movements of dusky sharks due to larger size \citep{Braccini2017b}, which is correlated with larger range \citep{Speed2010}\\
+	\\
+	Use of depth also varied between sandbar and dusky sharks. In Figure \ref{depth_mid}\&\ref{depth_south}, sandbars  are regularly detected at the higher receiver depths whereas the depth range of duskies is much more restricted. Additionally, in Figure \ref{depth_south}, dusky sharks are the only species regularly occur in depths of less than 25m. Dusky sharks could also be taking advantage of upwelling that often occurs in near shore waters \citep{Wintner2018} This could be linked to water temperature, where shallower waters are warmer and therefore used during the winter. In South Africa, female \textit{C. taurus}, which have a similar long gestation period to dusky sharks, move into warmer shallower waters during gestation then move south to give birth \citep{Dicken2007}. In addition, there is evidence of slight seasonal variation in depth use by juvenile sandbars on the Atlantic coast of North America, where dive depth increases during summer \citep{Speed2010}. Seasonal variation in depth could also be linked to optimal body temperature for metabolic performance, as observed in juvenile lemon sharks \citep{Speed2010}.	
 	
 
 	\subsection{Residency \& Migration}
 	
-	- results from RI models and ecological implications
-	
-	resident in ningaloo due to high productivity of coral reefs \citep{Espinoza2016}
-	females more likely in bull shark more likely to leave residential area than males - for giving birth \citep{Espinoza2016} - in contrast to dusky where the majority of males were migratory
-	
-	- individual variation in RI
-	
-	partial migration in bull sharks - ind variation - not all mature females migrate, some remain resident in E Aus \citep{Espinoza2016} - could be why some duskies remain
-	partial also seen in Port Jackson sharks, E Aus - \citep{Bass2017}
-	partial to most likely five birth in tiger sharks in Hawaii but not all mature females and mainly females \citep{Papastamatiou2013}
-	
-	- lack of correlation with migration status in duskies - ecological applications
-	
-	very little difference in sex distribution = fisheries captures in 1994-1999 in south gave very even dis of both species of both sexes caught \citep{McAuley2003}
-	
-	- drivers of residential movements
-	
-	cooler water temp in S Africa = upwellings along coast = > nutrients and increased teleosts so more predators present incl sandbars \citep{Wintner2018}
-	very little effect of water temperature on dusky movements in S Africa - could be more resilient hence detections further south than sandbars
-	in tiger sharks, movements between reefs are suggested to be due to foraging in Hawaii and individual based \citep{Papastamatiou2013}
-	
-	- prediction of migration
-	
-	very little effect of water temperature on dusky movements in S Africa - could be more resilient hence detections further south than sandbars \citep{Wintner2018}
-	seasonal environ change, reprod and foraging \citep{Espinoza2015}
-	give birth - e.g. move into temperate waters seen in C taurus though warmer for gestation \citep{Dicken2007}
-	segregated by age - sandbar observed in more temperature waters when young - in south at depths \textgreater 80m, neonates from Geraldton to Broome and caught in south below 26S \citep{McAuley2005} - extent of range potentially not as far south as perth receivers - issue with layout of receivers
-	but not being picked up on receivers in South - narrow continental shelf along south coast in comparison with Ningaloo - may not be picked up - also adults tagged in south
-	sandbar catch much lower between 1994 and 1999 than dusky but were present in south \citep{McAuley2003}
-	isolated reefs more likely to remain resident than well connected \citep{Espinoza2015} - Ningaloo not isolated so more likely to migrate
-	sandbars physiologically in heat at same time movement occurs within duskies \citep{McAuley2005}
-	
-		
-		
-	
-	- eval. of Acoustic Telemetry
-	only gives presence or absence data but valuable long term \citep{Bass2017}
-	relatively inexpensive \citep{Speed2010}
-	increased understanding of marine predators \citep{Espinoza2016}
-	HUGE GAP in middle of arrays
-
-	- future directions for research
-	
-	combination of catch data, such as that used in \citep{Braccini2017a} with acoustic data and more receivers in central range or deeper southern range to accurately assess risk
-	look further into depth use - receivers at greater range of depths as space use may change with climate change - higher temp = nearer shore, effects of climate change on this largely unquantified so far \citep{Speed2010}
-	evidence of size being important - larger networks \citep{Espinoza2015}and greater distances moved (Papamatadiou 2013) - wider size range of sharks
+	Residency index varied greatly with season and between species, but was similar betweeen time of day and sex. Highest residency was observed in sandbars, especially during the summer whereas dusky sharks showed lowest residency in summer. This could reconfirm the idea that sandbars do not leave Ningaloo for long periods of time as occurs in dusky sharks. RI also varied highly between individuals within dusky sharks which could indicate partial migration, also observed in Port Jackson and bull sharks in eastern Australia \citep{Bass2017,Espinoza2016}, and tiger sharks in Hawaii \citep{Papastamatiou2013}.\\
+	\\
+	Conversely, sandbars were found in the south of WA between 1994 and 1999, either indicating a shift in distribution or a preference for deeper waters \citep{Mcauley2003} outside the range of the acoustic receivers.\\
+	\\
+	All data collected by acoustic receivers should be interpreted with caution as it only gives presence or absence data but can a valuable source of relatively inexpensive long term data \citep{Speed2010,Bass2017}. the close proximity of receivers within the each line array in this system could have increased probability of detection however receivers in the same line were at different depths, removing a proportion of this bias, however outputs should still be interpreted with reference to other metrics
 
 	\subsection{Conclusions}
 	
-	As species that are slow to mature and have a low fecundity \citep{Cortes2000}, dusky and sandbar sharks are both slow to recover from overexploitation \citep{Rogers2013}. 
-	
-	management has been well implemented - easier than east coast due to single jurisdiction of WA. \citep{Heupel2015}
-
-	- high individual variability
-	challenging to explain \citep{Espinoza2015}
-	- seasonality
-	- lack of sexual influence
-	- overall drivers of residential movements
-	- can we predict large scale movements
-	
+	As species that are slow to mature and have a low fecundity \citep{Cortes2000}, dusky and sandbar sharks are both slow to recover from overexploitation \citep{Rogers2013}. This means understanding their movements is especially important. High seasonal variation and individual behavioural plasticity makes predictions of movements in these species very complex. In order to gain an accurate representation of broad and residential movements of both species, and to make predictions, more acoustic receivers at a greater range of depths and a more standard grid network would be helpful.
 	\newpage
 	
 	\noindent{\large \textit{Acknowledgements}}\\
+	
+	Thanks to the Zoological Society of London for hosting my masters project and to my primary supervisor Dr David Jacoby and to the Department of Fisheries, Government of Western Australia for all their help whilst working in Perth, especially my co-supervisor Dr Matias Braccini. Finally, thanks to my Imperial College supervisor Dr Samraat Pawar for his patience and help with logistics.
 	
 	\noindent{\large \textit{Data \& Code Availability}}\\
 	\\
@@ -371,7 +310,7 @@
 	
 	\newpage
 	
-	\section{References}
+	
 	
 	\bibliography{Bickerton_Katherine_CMEEMRes_2019}
 	
